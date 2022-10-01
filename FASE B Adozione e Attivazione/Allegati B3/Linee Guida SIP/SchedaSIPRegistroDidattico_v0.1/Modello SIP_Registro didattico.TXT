@@ -1,0 +1,307 @@
+﻿<?xml version="1.4" encoding="utf-8"?>
+<UnitaDocumentaria xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Intestazione>
+		<Versione>1.4</Versione>
+		<!-- Il tag va valorizzato con la stringa fissa "1.4" -->
+		<Versatore>
+			<Ambiente>XXXXXXXX</Ambiente>
+			<!-- Il tag sarà valorizzato con:
+           - "PARER_TEST" per i versamenti in ambiente di test
+           - "PARER" per i versamenti in ambiente di produzione -->
+			
+			<Ente>XXXXXX</Ente>
+			<!-- Denominazione dell'ente, comunicato da Parer, e configurato nell'ambiente -->
+			
+			<Struttura>XXXXXX</Struttura>
+			<!-- Denominazione della struttura, comunicata da Parer, e configurato nell'ambiente. Solitamente coincide con il codice AOO o con il codice IPA (in assenza di codice AOO) -->
+			
+			<UserID>XXXXXXX</UserID>
+			<!-- Denominazione dell'utente versatore solitamente composto da: "NOME APPLICATIVO VERSANTE_DENOMINAZIONE ENTE". Il valore è seguito dal suffisso "_PRE" in ambiente di test
+      Il valore viene fornito da Parer -->
+			
+		</Versatore>
+		<Chiave>
+			<Numero>XXXXXXXX</Numero>
+			<!-- Inserire il numero identificativo del registro. Se al registro non viene attribuito un identificativo specifico utilizzare una numerazione progressiva da 1 a n. nell'ambito dell'anno di creazione dei registri da inviare in conservazione, es. "1" per il primo registro creato nell'anno 2015, "2" per il secondo registro e così via-->
+			
+			<Anno>AAAA</Anno>
+			<!-- Inserire l'anno di registrazione o l'anno di creazione del registro-->
+			
+			<TipoRegistro>XXXXXXXXXXXX</TipoRegistro>
+			<!-- Denominazione che identifica il registro o in alternativa la stringa fissa "REGISTRI_DIDATTICI" -->
+		</Chiave>
+		<TipologiaUnitaDocumentaria>REGISTRO DIDATTICO</TipologiaUnitaDocumentaria>
+		<!-- Il tag va valorizzato con la stringa fissa "REGISTRO DIDATTICO" -->
+	</Intestazione>
+	<Configurazione>
+		<TipoConservazione>VERSAMENTO_ANTICIPATO</TipoConservazione>
+        <!-- Il tag va valorizzato con la stringa fissa "VERSAMENTO_ANTICIPATO" che definisce il processo di conservazione relativo a singole unità documentarie che possono trovarsi ancora nella fase attiva
+        del loro ciclo di vita -->
+		<ForzaAccettazione>false</ForzaAccettazione>
+		<!-- generalmente il parametro è settato su FALSE. Se modificato a TRUE significa che si accetta di versare anche documenti con firma non valida, scaduta, ecc. -->
+		
+		<ForzaConservazione>true</ForzaConservazione>
+		<!-- significa che si accetta di versare anche documenti non firmati. Nel caso in cui i documenti siano sempre firmati il parametro va settato su FALSE -->
+		
+		<ForzaCollegamento>false</ForzaCollegamento>
+		<!-- significa che non si verseranno mai documenti che indicano nel collegamento un riferimento ad un altro documento di protocollo che non è presente nel sistema di conservazione.
+        Se si pensa che la possibilità esista, settare a true -->
+		
+  	</Configurazione>
+	<ProfiloUnitaDocumentaria>
+		<Oggetto>Registro di[...], della classe [...], a.s. [20../..]</Oggetto>
+		<!-- La stringa, da valorizzare con una parte fissa e una variabile, è diversa in base alla tipologia di registro da inviare in conservazione:
+          - nel caso del registro delle materie, il metadato sarà valorizzato come segue <<Registro delle materie della classe [indicare la classe], [indicare l'eventuale indirizzo], a.s. [20../..]. Es. Registro delle materie della classe 1A Geometri, a.s. 2014/15>>
+		  - nel caso del registro di classe, il metadato sarà valorizzato come segue <Registro della classe [indicare la classe], [indicare l'eventuale indirizzo], a.s. [20../..]. Es. Registro della classe 1A Geometri,a.s. 2014/15>>
+          - nel caso del registro dei voti, il metadato sarà valorizzato come segue <Registro generale dei voti della classe [indicare la classe], [indicare l'eventuale indirizzo], a.s. [20../..]. Es. Registro generale dei voti della classe 1A Geometri,a.s. 2014/15>>
+		  - nel caso del registro del professore, il metadato sarà valorizzato come segue <Registro del professore della classe [indicare la classe], [indicare l'eventuale indirizzo], a.s. [20../..]. Es. Registro del professore della classe 1A Geometri,a.s. 2014/15>>
+		  La lunghezza massima del campo è 4096 byte-->
+		
+		<Data>aaaa-mm-gg</Data>
+		<!-- Data di creazione del registro -->
+		
+	</ProfiloUnitaDocumentaria>
+	<ProfiloArchivistico>
+		<FascicoloPrincipale>
+			<Classifica>XXXXXXXXXXXXXXXX</Classifica>
+			<!-- Il metadato va valorizzato con l'indicazione del codice di classificazione e la descrizione di ciascun componente gerarchico -->
+           <Fascicolo>
+				<Identificativo>XXXXXXXXXXXXXXX</Identificativo>
+				<!-- inserire la stringa con voce di titolario + numero di fascicolo principale + eventuale numero di inserto -->
+				<Oggetto>XXXXXXXXXXXXXX</Oggetto>
+				<!-- inserire la stringa con l'oggetto del fascicolo principale + eventuale nome dell'inserto -->
+			</Fascicolo>
+		</FascicoloPrincipale>
+		<FascicoliSecondari>
+			<FascicoloSecondario>
+				<Classifica>XXXXXXXXXXXXX</Classifica>
+				<!-- inserire la stringa con eventuale voce di titolario di classificazione secondaria -->
+				<Fascicolo>
+					<Identificativo>XXXXXXXXXXXX</Identificativo>
+					<!-- inserire la stringa con voce di titolario + numero di fascicolo secondario + eventuale numero di inserto -->
+					<Oggetto>XXXXXXX</Oggetto>
+					<!-- inserire la stringa con l'oggetto del fascicolo secondario + eventuale nome dell'inserto - il fascicolo principale è il primo fascicolo del documento -->
+				</Fascicolo>
+			</FascicoloSecondario>
+		</FascicoliSecondari>
+	</ProfiloArchivistico>
+	
+	<DatiSpecifici>
+	 <VersioneDatiSpecifici>1.0</VersioneDatiSpecifici>
+        <RedattoreNomeCognome>XXXXXXXXXXXXX</RedattoreNomeCognome>
+		<!-- FACOLTATIVO. Nome e cognome di chi ha generato il documento, da indicare se presente come metadato nel sistema -->
+
+        <RedattoreCF>XXXXX</RedattoreCF>
+        <!-- FACOLTATIVO. Codice fiscale di chi generato il documento, da indicare se presente come metadato nel sistema -->
+        
+        <DirigenteScolasticoNomeCognome>XXXXX</DirigenteScolasticoNomeCognome>
+        <!-- OBBLIGATORIO. Nome e cognome del dirigente scolastico firmatario del documento -->
+		
+		<DirigenteScolasticoCF>XXXXX</DirigenteScolasticoCF>
+        <!-- OBBLIGATORIO. Codice fiscale del dirigente scolastico firmatario del documento -->
+        
+        <Insegnamenti>XXXXX</Insegnamenti>
+        <!-- OBBLIGATORIO. Elenco delle materie comprese nel registro -->
+        
+        <Docenti>XXXX</Docenti>
+        <!-- OBBLIGATORIO. Elenco dei docenti -->
+		
+	<AnnoScolastico>XXXXXXXXXXXX</AnnoScolastico>
+	<!-- OBBLIGATORIO. Anno scolastisco di riferimento -->
+	
+	<ClasseSezioneDescrizione>XXXXXX</ClasseSezioneDescrizione>
+	<!-- OBBLIGATORIO. Descrizione della classe e della sezione es. "1 A"  -->
+		
+	<IndirizzoScolastico>XXXXXXXXX</IndirizzoScolastico>
+	<!-- OBBLIGATORIO. Indicazione dell'indirizzo scolastico es. "Geometri" -->
+		
+	<PlessoDenominazione>XXXXXXXXX</PlessoDenominazione>
+	<!-- FACOLTATIVO. Denominazione del plesso, da valorizzare però OBBLIGATORIAMENTE nel caso di istituti comprensivi o istituti che accorpino più scuole specialistiche -->
+		
+	<PlessoCodiceMIUR>XXXXX</PlessoCodiceMIUR>
+	<!-- FACOLTATIVO. Codice MIUR del plesso, da valorizzare però OBBLIGATORIAMENTE nel caso di istituti comprensivi o istituti che accorpino più scuole specialistiche -->
+		
+  	<SedePrincipaleCodiceMIUR>XXXX</SedePrincipaleCodiceMIUR>
+	<!-- OBBLIGATORIO. Codice MIUR dell'istituto, della direzione del circolo o dell'istituto comprensivo -->
+	
+	<Originatore>XXXXX</Originatore>
+	<!-- OBBLIGATORIO. Nominativo del resposnabile dell'Unità o del Settore cha ha prodotto il documento. Qualora l'informazione non sia disponibile inserire la stringa fissa "NON DISPONIBILE" -->
+	
+	<Responsabile>XXXXX</Responsabile>
+	<!-- OBBLIGATORIO. Denominazione dell'Unità o del Settore responsabile della produzione del documento. Qualora l'informazione non sia disponibile inserire la stringa fissa "NON DISPONIBILE" -->
+                 
+        <Operatore>XXXXX</Operatore>
+	<!-- OBBLIGATORIO. Nominativo dell'operatore che ha creato il documento. può essere valorizzato con la denominazione del sistema in caso di generazione automatica del documento.. Qualora l'informazione non sia disponibile 			inserire la stringa fissa "NON DISPONIBILE" -->
+
+       	<RegistroAltraRegistrazione>XXXXX</RegistroAltraRegistrazione>
+	<!-- OBBLIGATORIO. Denominazione del registro in cui è avvenuta l'eventuale e ulteriore registrazione del documento. Qualora il documento non sia oggetto di altra registrazione, inserire la stringa fissa "NON 				DISPONIBILE"-->
+
+        <AnnoAltraRegistrazione>aaaa</AnnoAltraRegistrazione>
+	<!-- OBBLIGATORIO. Anno dell'eventuale e ulteriore registrazione associata al documento. Qualora il documento non sia oggetto di altra registrazione, inserire la stringa fissa "NON DISPONIBILE"-->
+ 
+       	<NumeroAltraRegistrazione>XXXXX</NumeroAltraRegistrazione>
+	<!-- OBBLIGATORIO. Numero dell'eventuale e ulteriore registrazione associata al documento. Qualora il documento non sia oggetto di altra registrazione, inserire la stringa fissa "NON DISPONIBILE"-->
+ 
+       	<DataAltraRegistrazione>AAAA-MM-GG</DataAltraRegistrazione>
+	<!-- OBBLIGATORIO. Data dell'eventuale e ulteriore registrazione associata al documento. Qualora il documento non sia oggetto di altra registrazione, inserire la stringa fissa "NON DISPONIBILE"-->
+
+       	<TempoConservazione>XXXXX</TempoConservazione>
+	<!-- OBBLIGATORIO. Valore ricavato dal piano di conservazione o masismario di scarto. In caso di conservazione permanente inserire la stringa "ILLIMITATA". In caso sia definito il tempo di conservazione inserire il numero 			di anni in formato numerico. Qualora l'informazione non sia disponibile inserire la stringa fissa "NON DISPONIBILE"-->
+	
+        <Consultabilita>XXXX</Consultabilita>
+        <!-- OBBLIGATORIO. Il metadato indica la tipologia di dati contenuti all'interno del documento, sia ai sensi della normativa vigente in materia di privacy (D. Lgs. 196/2003 e atti del garante) sia in materia di beni 			culturali (D. Lgs. 42/2004). Valorizzare con:
+                 -DATI PERSONALI
+                 -DATI SENSIBILI
+                 -DATI GENETICI
+                 -DATI GIUDIZIARI
+                 -DATI STATO SALUTE
+                 -DATI VITA SESSUALE
+                 -DATI RAPPORTI RISERVATI FAMILIARI
+                 -RISERVATO
+                 -NON RISERVATO
+                 -NON PRECISATO
+                
+        <DenominazioneApplicativo>XXXX</DenominazioneApplicativo>
+        <!-- OBBLIGATORIO. Denominazione commerciale dell'applicativo che produce il documento. Qualora l'informazione non sia disponibile inserire la stringa fissa "NON DISPONIBILE"-->
+                 
+        <VersioneApplicativo>XXXX</VersioneApplicativo>
+        <!-- OBBLIGATORIO. Versione dell'applicativo che produce il documento. Qualora l'informazione non sia disponibile inserire la stringa fissa "NON DISPONIBILE"-->
+
+       	<ProduttoreApplicativo>XXXX</ProduttoreApplicativo>
+       	<!-- OBBLIGATORIO. Denominazione del produttore dell'applicativo che produce il documento. Qualora l'informazione non sia disponibile inserire la stringa fissa "NON DISPONIBILE"-->
+                 
+    </DatiSpecifici>
+	
+	<DocumentiCollegati>
+	<!-- In caso di collegamento con altre unità documentarie (tra cui anche il documento protocollato qualora l'UD sia anche registrata nel protocollo generale) utilizzare la sezione <DocumentoCollegato> per rendere l'informazione sul collegamento -->
+		<DocumentoCollegato>
+			<ChiaveCollegamento>
+				<Numero>XXXXXX</Numero>
+				<!-- Numero di protocollo o numero di registrazione di altro documento collegato -->
+				
+				<Anno>AAAA</Anno>
+				<!-- Anno di protocollazione o registrazione di altro documento collegato -->
+				
+				<TipoRegistro>XXXX</TipoRegistro>
+				<!-- Registro del documento collegato -->
+				
+			</ChiaveCollegamento>
+			<DescrizioneCollegamento>XXXXX</DescrizioneCollegamento>
+			<!-- Descrizione della motivazione del collegamento (per es. "Registrazione di protocollo")-->
+		</DocumentoCollegato>
+	</DocumentiCollegati>
+	
+	<NumeroAllegati>n</NumeroAllegati>
+	<!-- Inserire il numero di allegati, coerente con quanto indicato nel seguito dell'XML -->
+	
+	<NumeroAnnessi>0</NumeroAnnessi>
+	<!-- Il tag va valorizzato con il numero di annessi, coerente con quanto indicato nel seguito dell'XML. Per la tipologia documentaria il tag assume valore "0" -->
+	
+	<NumeroAnnotazioni>0</NumeroAnnotazioni>
+	<!-- Il tag va valorizzato con il numero di annotazioni, coerente con quanto indicato nel seguito dell'XML. Per la tipologia documentaria il tag assume valore "0"  -->
+	
+	<DocumentoPrincipale>
+		<IDDocumento>XXXXXXX</IDDocumento>
+		<!-- ID del registro assegnato dal sistema versante -->
+		
+		<TipoDocumento>xxxxxx</TipoDocumento>
+		<!-- Specificare la tipologia del registro didattico. Il tag dovrà assumere uno dei seguenti valori a seconda della tipologia del registro gestite:
+		- REGISTRO GENERALE DEI VOTI 
+		- REGISTRO DI CLASSE
+		- REGISTRO DELLE MATERIE
+		- REGISTRO DEL PROFESSORE-->
+		
+		<ProfiloDocumento>
+			<Descrizione>XXXXXXXXXX</Descrizione>
+			<!-- Tipologia del documento. Il tag può essere omesso  -->
+			<Autore>XXXXXX</Autore>
+			<!-- Inserire l'autore del documento. Il tag può essere omesso -->
+			</ProfiloDocumento>
+
+		<StrutturaOriginale>
+			<TipoStruttura>DocumentoGenerico</TipoStruttura>
+			<Componenti>
+				<Componente>
+					<ID>ID1</ID>
+					<!-- ID progressivo all'interno del singolo versamento, a partire da ID1 -->
+					<OrdinePresentazione>1</OrdinePresentazione>
+					<TipoComponente>Contenuto</TipoComponente>
+					<TipoSupportoComponente>FILE</TipoSupportoComponente>
+					<NomeComponente>XXXXXXXXXX</NomeComponente>
+					<!-- Nome del file, completo di estensione -->
+					
+					<FormatoFileVersato>XXXX</FormatoFileVersato>
+					<!-- Formato del file, coerente con la lista di formati ammessi preventivamente concordati -->
+					
+					<HashVersato>XXXXXXXXXXXXX</HashVersato>
+					<!-- Impronta del documento calcolato dal sistema versante -->
+					
+					<UrnVersato>XXXXXXXXXXXXXXXXX</UrnVersato>
+					<!-- URN del documento, se disponibile -->
+					
+					<IDComponenteVersato>XXXXXXXXXXXXX</IDComponenteVersato>
+					<!-- ID del componente versato, se disponibile -->
+					
+					<UtilizzoDataFirmaPerRifTemp>false</UtilizzoDataFirmaPerRifTemp>
+					<RiferimentoTemporale>aaaa-mm-ggThh:mm:ss</RiferimentoTemporale>
+					<!-- Il riferimento temporale per la verifica della firma digitale è la data di protocollazione, la data di registrazione comprensiva di ora o la data di firma estratta dall'applicativo produttore -->
+					<DescrizioneRiferimentoTemporale>XXXXXXX</DescrizioneRiferimentoTemporale>
+					<!-- Il riferimento temporale sarà:
+                    - DATA DI PROTOCOLLAZIONE : nel caso in cui il documento sia registrato a protocollo
+                    - DATA DI REGISTRAZIONE : nel caso in cui il documento sia repertoriato in apposito registro-->
+				</Componente>
+			</Componenti>
+		</StrutturaOriginale>
+	</DocumentoPrincipale>
+	
+	<!-- La sezione <Allegati> va valorizzata solamente se presenti allegati di vario genere. -->
+	<Allegati>
+		<Allegato>
+			<IDDocumento>XXXXXXXXXX</IDDocumento>
+			<!-- ID dell'allegato al registro, assegnato dal sistema versante -->
+			
+			<TipoDocumento>GENERICO</TipoDocumento>
+			<!-- tipo di allegato generico non tipizzato parte integrante del documento principale -->
+			<ProfiloDocumento>
+			<Descrizione>XXXXXXXXXX</Descrizione>
+			<!-- Descrizione del documento se valorizzata nel sistema di protocollo. il tag può essere omesso -->
+			
+			<Autore>XXXXXXXXXXXXX</Autore>
+			<!-- Nominativo/i del firmatario/i del documento, se presente -->
+			
+		</ProfiloDocumento>
+			<StrutturaOriginale>
+				<TipoStruttura>DocumentoGenerico</TipoStruttura>
+				<Componenti>
+					<Componente>
+						<ID>ID2</ID>
+						<OrdinePresentazione>2</OrdinePresentazione>
+						<TipoComponente>Contenuto</TipoComponente>
+						<TipoSupportoComponente>FILE</TipoSupportoComponente>
+						<NomeComponente>XXXXXXXXXX</NomeComponente>
+						<FormatoFileVersato>XXXXXXXXXXXXXXXXXXX</FormatoFileVersato>
+						<HashVersato>XXXXXXXXXXXXX</HashVersato>
+						<UrnVersato>XXXXXXXXXXXXXXXXXXXXX</UrnVersato>
+						<IDComponenteVersato>XXXXXXXXXXXXXXXXX</IDComponenteVersato>
+						
+						<UtilizzoDataFirmaPerRifTemp>false</UtilizzoDataFirmaPerRifTemp>
+						<RiferimentoTemporale>aaaa-mm-ggThh:mm:ss</RiferimentoTemporale>
+						<!-- Il riferimento temporale per la verifica della firma digitale è la data di protocollazione, la data di registrazione comprensiva di ora o la data di firma estratta dall'applicativo produttore  -->
+						<DescrizioneRiferimentoTemporale>XXXXXX</DescrizioneRiferimentoTemporale>
+						<!-- Gli ultimi tre tag vanno popolati solo nel caso di allegati firmati digitalmente secondo quanto applicato per il documento principale cioè:
+                    - DATA DI PROTOCOLLAZIONE : nel caso in cui il documento sia registrato a protocollo
+                    - DATA DI REGISTRAZIONE : nel caso in cui il documento sia repertoriato in apposito registro
+
+                    nel caso il documento allegato non sia firmato <UtilizzoDataFirmaPerRifTemp>, <RiferimentoTemporale>, <DescrizioneRiferimentoTemporale> possono essere omessi  -->
+					</Componente>
+				</Componenti>
+			</StrutturaOriginale>
+		</Allegato>
+	</Allegati>
+</UnitaDocumentaria>
+
+
+
+
+
+
