@@ -1,0 +1,493 @@
+<?xml version="1.4" encoding="utf-8"?>
+<UnitaDocumentaria xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Intestazione>
+    <Versione>1.4</Versione>
+	<!-- il tag andrà valorizzato con la stringa fissa "1.4" -->
+	
+    <Versatore>
+      <Ambiente>XXXXXX</Ambiente>
+      <!-- Il tag sarà valorizzato con:
+           - "PARER_TEST" per i versamenti in ambiente di test
+           - "PARER" per i versamenti in ambiente di produzione -->
+      <Ente>XXXXX</Ente>
+      <!-- Denominazione dell'ente, comunicato da Parer, e configurato nell'ambiente -->
+
+      <Struttura>XXXXXXX</Struttura>
+      <!-- Denominazione della struttura, comunicata da Parer, e configurato nell'ambiente. Solitamente coincide con il codice AOO o con il codice IPA (in assenza di codice AOO)  -->
+      
+      <UserID>XXXXXX</UserID>
+      <!-- Denominazione dell'utente versatore solitamente composto da: "NOME APPLICATIVO VERSANTE_DENOMINAZIONE ENTE". Il valore è seguito dal suffisso "_PRE" in ambiente di test
+      Il valore viene fornito da Parer -->
+	  
+    </Versatore>
+    <Chiave>
+      <Numero>XXXXX</Numero>
+      <!-- Il tag andrà valorizzato con il numero identificativo attribuito al referto. 
+	  Si precisa che il sistema di conservazione non ammette il versamento di unità documentarie aventi stessa chiave identificativa. Nel caso di sostituzione del referto (ad esempio in caso di errori materiali) gestita con la generazione di nuova versione del referto originario, che conserva lo stesso numero di refertazione della versione originaria è necessario diversificare la chiave identificativa per consentire il versamento di entrambe le versioni. A tal fine si suggerisce di inserire il numero di versione nella parte finale dell’identificativo utilizzando la seguente sintassi “[identificativo]_ [numero progressivo della versione]. Ad esempio 32347_1 (1° versione del referto originario n. 32347), 32347_2 (2° versione del referto originario n. 32347) -->
+     
+	  <Anno>AAAA</Anno>
+      <!-- Il tag andrà valorizzato con anno del referto  -->
+ 
+	  <TipoRegistro>XXXXX</TipoRegistro>
+      <!-- Il tag andrà valorizzato con la denominazione o codice attribuita/o dal Produttore al registro. In generale per registro si intende in alternativa: 
+	  - repertorio in cui sono registrati in ordine progressivo i documenti ad esso afferenti (ex art. 53, D.P.R. 28/12/2000 n. 445). La denominazione o codice viene attribuita dall’Ente; 
+	  -  contesto applicativo/documentale nell’ambito del quale avviene l’assegnazione dell’identificativo progressivo e univoco. La denominazione o codice del registro viene concordata con ParER. -->
+     
+   </Chiave>
+   <TipologiaUnitaDocumentaria>REFERTO</TipologiaUnitaDocumentaria>
+   <!-- Il tag andrà valorizzato con la stringa fissa "REFERTO" -->
+ 
+   </Intestazione>
+   <Configurazione>
+     <TipoConservazione>VERSAMENTO_ANTICIPATO</TipoConservazione>
+     <!-- Inserire la stringa fissa "VERSAMENTO_ANTICIPATO" -->
+	 
+     <ForzaAccettazione>false</ForzaAccettazione>
+     <!-- Il tag andrà valorizzato con la stringa fissa "false" -->
+	 
+     <ForzaConservazione>XXXXX</ForzaConservazione>
+     <!-- Il tag andrà valorizzato o con la stringa "false", nel caso di versamento di un referto dotato di firma digitale, o con la stringa "true" nel caso di versamento di un referto privo di firma digitale -->
+	 
+     <ForzaCollegamento>false</ForzaCollegamento>
+     <!-- Il tag andrà valorizzato con la stringa fissa "false"  -->
+	 
+   </Configurazione>
+   
+   <ProfiloArchivistico>
+    <!-- La sezione <ProfiloArchivistico> va valorizzata nel caso in cui l'unità documentaria venga classificata e fascicolata e tale informazione sia presente come dato strutturato all'interno dell'applicativo.
+    È possibile valorizzare solo la Classifica e non i campi descrittivi del Fascicolo nel caso in cui l’Unità documentaria sia stata solo classificata e non fascicolata. Nel caso in cui i dati non siano a disposizione l'intera sezione va omessa dall'xml di versamento -->
+		<FascicoloPrincipale>
+			<Classifica>XXXXXXXXXXXXXXXX</Classifica>
+			<!-- Il metadato va valorizzato con l'indicazione del codice di classificazione e la descrizione di ciascun componente gerarchico -->
+		<Fascicolo>
+				<Identificativo>XXXXX</Identificativo>
+				<!-- inserire la stringa con voce di titolario + numero e anno del fascicolo principale -->
+
+				<Oggetto>XXXXX</Oggetto>
+				<!-- inserire la stringa con l'oggetto del fascicolo principale -->
+
+			</Fascicolo>
+			<SottoFascicolo>
+				<!-- Opzionale. Da inserire solo se gestito nell'applicativo in uso -->
+
+					<Identificativo>XXXXXXXXXX</Identificativo>
+					<!-- Codice che identifica l'eventuale sottofascicolo a cui è stato assegnato il documento -->
+
+					<Oggetto>XXXXXXXXXXXXXXXXXXXX</Oggetto>
+					<!-- Valore relativo all'oggetto o titolo dell'eventuale sottofascicolo a cui è stato assegnato il documento -->
+
+			</SottoFascicolo>
+		</FascicoloPrincipale>
+		<FascicoliSecondari>
+		<!--In questa sezione vanno indicate le informazioni relative alle eventuali Classifiche secondarie, Fascicoli e Sottofascicoli secondari in cui sia stata classificata o fascicolata l’Unità documentaria. Valgono le stesse considerazioni effettuate per il fascicolo principale   -->
+			<FascicoloSecondario>
+				<Classifica>XXXXXXXXX</Classifica>
+				<!-- inserire la stringa con eventuale voce di titolario di classificazione secondaria -->
+
+				<Fascicolo>
+					<Identificativo>XXXXXXXXX</Identificativo>
+					<!-- inserire la stringa con voce di titolario + numero e anno di fascicolo secondario -->
+
+					<Oggetto>XXXXXXX</Oggetto>
+					<!-- inserire la stringa con l'oggetto del fascicolo secondario -->
+
+				</Fascicolo>
+			</FascicoloSecondario>
+		</FascicoliSecondari>
+	</ProfiloArchivistico>
+   <ProfiloUnitaDocumentaria>
+   
+   <Oggetto>xxxxx</Oggetto>
+   <!-- Stringa così composta: Referto [tipologia di referto] prodotto da [StrutturaErogante]  -->
+   
+   <Data>aaaa-mm-gg</Data>
+     <!-- Il tag andrà valorizzato con la data (solo la data non l'ora) in cui il referto è stato validato/consolidato, cioè ha raggiunto il suo stato definitivo in base a cui
+     non può essere più modificato (salvo produzione di una nuova versione del referto stesso).
+     Nel caso in cui la validazione/consolidamento avvenga attraverso l'apposizione della firma digitale da parte del medico refertante, la data di firma con cui valorizzare il presente tag andrà recuperata
+     dal DB dell'applicativo verticale che ha prodotto il referto e non dalla busta crittografica della firma, dato che la data presente all'interno della busta crittografica può essere poco attendibile.
+     Nel caso in cui il referto presenti la firma digitale non di un unico medico refertante, ma di più medici refertanti, il tag andrà valorizzato con la data di firma apposta dall'ultimo medico in ordine di tempo -->
+	 
+	</ProfiloUnitaDocumentaria>
+	
+   <DatiSpecifici>
+     <VersioneDatiSpecifici>1.0</VersioneDatiSpecifici>
+	 <!-- Il tag andrà valorizzato con "1.0" -->
+	 
+	 <AziendaErogante>XXXXXXX</AziendaErogante>
+	 <!-- FACOLTATIVO - Denominazione dell’Azienda di cui fa parte la struttura specifica (ad esempio U.O.C. oppure U.O. oppure U.O.S. o simili) responsabile della produzione del referto. Nota: in caso di referto strutturato secondo il tracciato HL7 CDA2 l’informazione non è richiesta e l’elemento non dovrà comparire nell’Indice SIP -->
+	 
+	 <StrutturaErogante>XXXXXXXX</StrutturaErogante>
+     <!-- OBBLIGATORIO - Denominazione che identifica la struttura specifica (ad esempio U.O.C. oppure U.O. oppure U.O.S. o simili) che all’interno dell’Azienda è responsabile della produzione del referto. Nota: in caso di referto strutturato secondo il tracciato HL7 CDA2 l’informazione non è richiesta e l’elemento non dovrà comparire nell’Indice SIP -->
+    
+	 <IDStrutturaErogante>XXXXXXXX</IDStrutturaErogante>
+     <!-- OBBLIGATORIO - Identificativo che identifica la struttura specifica (ad esempio U.O.C. oppure U.O. oppure U.O.S. o simili) che all’interno dell’Azienda è responsabile della produzione del referto -->
+	 
+	 <ResponsabileStrutturaErogante>XXXXXXXX</ResponsabileStrutturaErogante>
+     <!-- OBBLIGATORIO - Nominativo del Responsabile della struttura specifica (ad esempio U.O.C. oppure U.O. oppure U.O.S. o simili) che all’interno dell’Azienda è responsabile della produzione del referto. Nota: in caso di referto strutturato secondo il tracciato HL7 CDA2 l’informazione non è richiesta e l’elemento non dovrà comparire nell’Indice SIP  -->
+     
+	 <!-- Almeno uno dei due tag seguenti <IDPazienteAnagraficaLocale> e <IDPazienteAnagraficaAziendale> deve essere valorizzato -->
+     <IDPazienteAnagraficaLocale>XXXXXXXX</IDPazienteAnagraficaLocale>
+     <!-- Identificativo del paziente all’interno dell’applicativo verticale che ha prodotto il referto  -->
+     
+	 <IDPazienteAnagraficaAziendale>XXXXXXXXX</IDPazienteAnagraficaAziendale>
+     <!-- Identificativo del paziente all’interno dell’anagrafica centrale dell’azienda  -->
+   
+     <CodiceAssistito>XXXXXXXX</CodiceAssistito>
+     <!-- OBBLIGATORIO - Codice fiscale del paziente, oppure nel caso in cui questo non sia presente, con uno dei seguenti codici che variano a seconda della condizione giuridica che legittima la presenza del paziente straniero sul territorio italiano: codice STP, codice ENI; codice PSU, codice regionale per i soggetti richiedenti asilo politico. Nota: in caso di referto strutturato secondo il tracciato HL7 CDA2 l’informazione non è richiesta e l’elemento non dovrà comparire nell’Indice SIP- Il tag ammette un valore di almeno 11 caratteri e massimo 16.  -->
+     
+	 <TipoCodiceAssistito>XXXXXXX</TipoCodiceAssistito>
+	 <!-- OBBLIGATORIO - Indicazione del tipo di codice valorizzato nel tag <CodiceAssistito> (es. CF, STP, ENI ecc...). Nota: in caso di referto strutturato secondo il tracciato HL7 CDA2 l’informazione non è richiesta e l’elemento non dovrà comparire nell’Indice SIP  -->
+	 
+	 <NumeroTesseraSanitaria>XXXXXXXXX</NumeroTesseraSanitaria>
+     <!-- FACOLTATIVO - Numero della tessera sanitaria regionale. Nota: in caso di referto strutturato secondo il tracciato HL7 CDA2 l’informazione non è richiesta e l’elemento non dovrà comparire nell’Indice SIP -->
+     
+	 <NumeroTesseraTEAM>XXXXXXXXX</NumeroTesseraTEAM>
+     <!-- FACOLTATIVO - Numero della tessera TEAM.  Nota: in caso di referto strutturato secondo il tracciato HL7 CDA2 l’informazione non è richiesta e l’elemento non dovrà comparire nell’Indice SIP -->
+ 
+     <CognomePaziente>XXXXXXXXX</CognomePaziente>
+     <!-- OBBLIGATORIO -->
+	 
+     <NomePaziente>XXXXXXXXX</NomePaziente>
+     <!-- OBBLIGATORIO -->
+	 
+
+     <DataNascitaPaziente>aaaa-mm-gg</DataNascitaPaziente>
+     <!-- OBBLIGATORIO -->
+   
+     <LuogoNascitaPaziente>XXXXXXXXXX</LuogoNascitaPaziente>
+     <!-- OBBLIGATORIO - Indicare la denominazione del comune o il codice ISTAT -->
+	 
+	 <Operatore>XXXXXXXXXX</Operatore>
+     <!-- FACOLTATIVO - Nominativo dell’operatore che ha redatto il referto se diverso dal medico refertante. Nota: in caso di referto strutturato secondo il tracciato HL7 CDA2 l’informazione non è richiesta e l’elemento non dovrà comparire nell’Indice SIP -->
+     
+	 <Refertanti>
+	                   &lt;Nominativo&gt;XXXXXXXXXXXXXXXXXXXXXX&lt;/Nominativo&gt;
+                       &lt;CodiceFiscale&gt;XXXXXXXXXXXXXXXX&lt;/CodiceFiscale&gt;
+                       &lt;Nominativo&gt;XXXXXXXXXXXXXXXXXXXXXXXXX&lt;/Nominativo&gt;
+                       &lt;CodiceFiscale&gt;XXXXXXXXXXXXXXXX&lt;/CodiceFiscale&gt;
+	 </Refertanti>
+     <!-- OBBLIGATORIO - Nominativo e codice fiscale del medico refertante, che apponendo la propria firma digitale al referto ne assume la paternità legale.
+     Il tag è predisposto per accogliere i dati identificativi non di un solo medico, ma di più medici, nel caso in cui i refertanti siano diversi.  -->
+     
+	 <AltreRisorsePartecipanti>XXXXXXXXXX</AltreRisorsePartecipanti>
+	 <!-- FACOLTATIVO - Nominativi di tutti coloro che a vario titolo - ad eccezione dei medici refertanti già metadati con il tag <Refertanti> - sono intervenuti in una qualsiasi delle fasi del processo
+     di erogazione della prestazione sanitaria e del corrispondente referto.  Nel caso di più nominativi utilizzare
+     la seguente sintassi: <AltreRisorsePartecipanti>&lt;Nominativo&gt;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&lt;/Nominativo&gt;&lt;Nominativo&gt;XXXXXXXXXXXXXXXXXXX&lt;/Nominativo&gt;</AltreRisorsePartecipanti>.
+	 Nota: in caso di referto strutturato secondo il tracciato HL7 CDA2 l’informazione non è richiesta e l’elemento non dovrà comparire nell’Indice SIP	 -->
+	 
+	 <PrescrittoriDestinatari>
+	                   &lt;Nominativo&gt;XXXXXXXXXXXXXXXXXXXXXX&lt;/Nominativo&gt;
+                       &lt;CodiceFiscale&gt;XXXXXXXXXXXXXXXX&lt;/CodiceFiscale&gt;
+                       &lt;Nominativo&gt;XXXXXXXXXXXXXXXXXXXXXXXXX&lt;/Nominativo&gt;
+                       &lt;CodiceFiscale&gt;XXXXXXXXXXXXXXXX&lt;/CodiceFiscale&gt;
+	
+	 </PrescrittoriDestinatari>
+     <!-- FACOLTATIVO - Nominativo  e cod. fiscale del medico destinatario del referto. 
+     Il tag è predisposto per accogliere i dati identificativi non di un solo medico, ma di più medici.  Nota: in caso di referto strutturato secondo il tracciato HL7 CDA2 l’informazione non è richiesta e l’elemento non dovrà comparire nell’Indice SIP -->
+
+	  <AziendaPrescritticeDestinataria>XXXXX</AziendaPrescritticeDestinataria>
+     <!-- FACOLTATIVO - Denominazione dell'azienda a cui appartiene il medico destinatario del referto. Nota: in caso di referto strutturato secondo il tracciato HL7 CDA2 l’informazione non è richiesta e l’elemento non dovrà comparire nell’Indice SIP  -->
+	 
+	 <StrutturaPrescrittriceDestinataria>XXXXX</StrutturaPrescrittriceDestinataria>
+     <!-- FACOLTATIVO - Denominazione della struttura specifica (ad esempio U.O. oppure U.O.C oppure U.O.S o simili) a cui appartiene il medico destinatario del referto. Nota: in caso di referto strutturato secondo il tracciato HL7 CDA2 l’informazione non è richiesta e l’elemento non dovrà comparire nell’Indice SIP  -->
+	 
+	 <IdStrutturaPrescrittriceDestinataria>XXXXXX</IdStrutturaPrescrittriceDestinataria>
+     <!-- FACOLTATIVO - Identificativo della struttura specifica (ad esempio U.O. oppure U.O.C oppure U.O.S o simili) a cui appartiene il medico destinatario del referto. Nota: in caso di referto strutturato secondo il tracciato HL7 CDA2 l’informazione non è richiesta e l’elemento non dovrà comparire nell’Indice SIP  -->  
+	 
+	 <IdRichiesta>XXXXX</IdRichiesta>
+     <!-- OBBLIGATORIO - ID della richiesta di prestazione/i : l'ID di una accettazione diretta o l'ID di una richiesta proveniente da CUP o l'ID di una richiesta proveniente dall'order entry. Nota: in caso di referto strutturato secondo il tracciato HL7 CDA2 l’informazione non è richiesta e l’elemento non dovrà comparire nell’Indice SIP -->
+	 
+	 <DataRichiesta>aaaa-mm-ggThh:mm:ss</DataRichiesta>
+     <!-- OBBLIGATORIO - Data e l'ora della richiesta di prestazione. Nota: in caso di referto strutturato secondo il tracciato HL7 CDA2 l’informazione non è richiesta e l’elemento non dovrà comparire nell’Indice SIP -->
+	 
+	 <CodicePrioritaRichiesta>XXXXX</CodicePrioritaRichiesta>
+	 <!-- FACOLTATIVO - Codice di priorità assegnato alla richiesta di prestazione (ad es. urgenza oppure routine). Nota: in caso di referto strutturato secondo il tracciato HL7 CDA2 l’informazione non è richiesta e l’elemento non dovrà comparire nell’Indice SIP -->
+	 
+     <ModalitaDiAccesso>XXXXXXXXXX</ModalitaDiAccesso>
+     <!-- OBBLIGATORIO - Indicazione della modalità o regime (ricovero ordinario, day hospital, pronto soccorso, ambulatoriale, day service etc. etc.) con cui il paziente ha avuto accesso alla struttura ospedaliera per l'erogazione della prestazione sanitaria e per la produzione del corrispondente referto. Nota: in caso di referto strutturato secondo il tracciato HL7 CDA2 l’informazione non è richiesta e l’elemento non dovrà comparire nell’Indice SIP  -->
+    
+	 <CodiceNosografico>XXXXXXXXXX</CodiceNosografico>
+     <!-- FACOLTATIVO - Codice nosografico/nosologico che coincide con il numero della cartella di ricovero a cui appartiene logicamente il referto, nel caso in cui lo stesso sia stato prodotto per un paziente in regime di ricovero ordinario o in regime di day hospital. Nota: in caso di referto strutturato secondo il tracciato HL7 CDA2 l’informazione non è richiesta e l’elemento non dovrà comparire nell’Indice SIP  -->
+
+	 <CodiceProntoSoccorso>XXXXXXXXXX</CodiceProntoSoccorso>
+     <!-- FACOLTATIVO  - Nel caso in cui l'accesso al pronto soccorso non esiti in un ricovero, inserire il numero di accesso al pronto soccorso che individua anche la cartella di pronto soccorso a cui appartiene  logicamente il referto che sia stato prodotto per un paziente che è ricorso alla struttura d'emergenza. Nota: in caso di referto strutturato secondo il tracciato HL7 CDA2 l’informazione non è richiesta e l’elemento non dovrà comparire nell’Indice SIP--> 
+	 
+	 <CodiceEpisodio>XXXXXXXXXX</CodiceEpisodio>
+     <!-- FACOLTATIVO - Codice di accesso alla struttura ambulatoriale che individua anche il numero del fascicolo ambulatoriale a cui appartiene logicamente il referto, nel caso in cui lo stesso sia stato prodotto per un paziente esterno. Nota: in caso di referto strutturato secondo il tracciato HL7 CDA2 l’informazione non è richiesta e l’elemento <AziendaErogante> non dovrà comparire nell’Indice SIP -->
+    
+	 <CodiceDayService>XXXXXXXXXX</CodiceDayService>
+     <!-- FACOLTATIVO -  Codice di accesso di day service che individua anche il numero del fascicolo di day service a cui appartiene logicamente il referto, nel caso in cui lo stesso sia stato prodotto durante un accesso in day service del paziente. Nota: in caso di referto strutturato secondo il tracciato HL7 CDA2 l’informazione non è richiesta e l’elemento non dovrà comparire nell’Indice SIP  -->
+
+	 <CodicePercorsoPDTA>XXXXXXXXXX</CodicePercorsoPDTA>
+     <!-- FACOLTATIVO - Codice del PDTA che individua il fascicolo a cui appartiene logicamente il referto, nel caso in cui lo stesso sia stato prodotto per un paziente  che ha fruito di un dato Percorso Diagnostico Terapeutico Assistenziale. Nota: in caso di referto strutturato secondo il tracciato HL7 CDA2 l’informazione non è richiesta e l’elemento non dovrà comparire nell’Indice SIP-->
+    
+	 <TipoEDataPrestazione>XXXXX</TipoEDataPrestazione>
+     <!-- OBBLIGATORIO - Indicazione relativa al tipo di esame o di prestazione per la quale è stato prodotto il referto accompagnato dalla data e ora della prestazione. Se il referto fa riferimento a prestazione diverse queste devono essere inserite
+      nel medesimo tag utilizzando la seguente sintassi: <TipoEDataPrestazione> &lt;Prestazione&gt;XXXXXXXXXXXXXXXXXXXXXX&lt;/Prestazione&gt;
+                       &lt;Data&gt;aaaa-mm-ggThh:mm:ss&lt;/Data&gt;
+                       &lt;Prestazione&gt;XXXXXXXXXXXXXXXXXXXXXXXXX&lt;/Prestazione&gt;
+                       &lt;Data&gt;aaaa-mm-ggThh:mm:ss&lt;/Data&gt;</TipoEDataPrestazione>. 
+					   
+	 In caso di più prestazioni e superamento del numero massimo di caratteri ammesso pari a 4096 è possibile riportare le informazioni su tipo e data di prestazione in un file (preferibilmente in formato .csv) da versare all'interno del pacchetto di versamento come documento annesso denominato "ELENCO_PRESTAZIONI". Se si adotta qusta modalità il tag <TipoEDataPrestazione> andrà valorizzato con la stringa "VEDI ELENCO PRESTAZIONI".  
+	 Nota: in caso di referto strutturato secondo il tracciato HL7 l’elemento  non dovrà comparire nell’Indice SIP -->
+	 
+	 <TipoCodicePrestazione>XXXXXX</TipoCodicePrestazione>
+     <!-- FACOLTATIVO - Tipo di nomenclatore (nomenclatore aziendale, nomenclatore regionale, nomenclatore nazionale) usato per codificare la/e prestazione/prestazioni. 
+	 Nota: in caso di referto strutturato secondo il tracciato HL7 CDA2 l’informazione non è richiesta e l’elemento non dovrà comparire nell’Indice SIP -->
+	 
+	 <TipoDataPrestazione>XXXXXXX</TipoDataPrestazione>
+	 <!-- OBBLIGATORIO - Descrizione della data della prestazione inserita nell’elemento <TipoEDataPrestazione>. La data può corrispondere a:
+      - DATA_FINE_ESAME, per i referti di specialistica ambulatoriale e radiologia
+      - DATA_ACCETTAZIONE_ESAME per i referti di laboratorio e microbiologia (data di "check-in")
+      - DATA_ACCETTAZIONE_PRIMO_CAMPIONE per i referti di anatomia patologica(data di "check-in")
+      Qualora l’informazione non sia disponibile inserire la stringa fissa “NON DISPONIBILE”.
+      Nota: in caso di referto strutturato secondo il tracciato HL7 CDA2 l’informazione non è richiesta e l’elemento non dovrà comparire nell’Indice SIP -->
+      
+	 <TipoProcedura>XXXX</TipoProcedura>
+	 <!-- FACOLTATIVO - PER I SOLI REFERTI DI ANATOMIA PATOLOGICA  inserire eventuali informazioni relative alla procedura utilizzata (del tipo “Estemporanea”, “Pap test”, “Routine”, “Urgente” ecc…) -->
+	
+     <IdCampione>XXXXXXXXXXXXXXXXXXXXXXX</IdCampione>
+     <!-- OBBLIGATORIO - PER I SOLI REFERTI DI ANATOMIA PATOLOGICA (PER LE ALTRE TIPOLOGIE DI REFERTI VALORIZZARE CON "NON_PERTINENTE"). Il tag deve essere valorizzato con l'ID che identifica il campione prelevato. Nel caso in cui il referto faccia riferimento a prestazioni eseguite su più campioni, i molteplici ID dei campioni vanno inseriti tutti dentro il medesimo tag e la sintassi da utilizzare deve essere la seguente:
+     <IdCampione>
+      &lt;Campione&gt;123A&lt;/Campione&gt;
+      &lt;Campione&gt;123B&lt;/Campione&gt;
+      </IdCampione>.  -->
+	 
+     <IdEsame>XXXXXXXXXXXXXXXXXXXXXX</IdEsame>
+	 <!-- OBBLIGATORIO - PER I SOLI REFERTI DI ANATOMIA PATOLOGICA (PER LE ALTRE TIPOLOGIE DI REFERTO VALORIZZARE CON "NON_PERTINENTE"). Il tag andrà valorizzato con il numero dell'esame.  -->
+	  
+	 <!-- Almeno uno dei due tag seguenti <AccessionNumber> e <IDStudioDICOM> deve essere valorizzato -->
+	 <AccessionNumber>XXXXXXXXXXXXXXXXXXXX</AccessionNumber>
+     <!-- PER I SOLI REFERTI DI DIAGNOSTICA PER IMMAGINI (PER LE ALTRE TIPOLOGIE DI REFERTO VALORIZZARE CON "NON_PERTINENTE").Inserire l'Accession Number fornito dal sistema RIS-PACS aziendale che ha generato le immagini per produrre il referto. -->
+      
+     <IDStudioDICOM>XXXXXXXXXXXXXXXXXXXXXXXX</IDStudioDICOM>
+     <!-- PER I SOLI REFERTI DI DIAGNOSTICA PER IMMAGINI (PER LE ALTRE TIPOLOGIE DI REFERTI VALORIZZARE CON "NON_PERTINENTE").Inserire l'INSTANCESTUDYID fornito dal sistema PACS aziendale che ha generato le immagini per produrre il referto -->
+	  
+	 <DataFirma>aaaa-mm-ggThh:mm:ss</DataFirma>
+     <!--  OBBLIGATORIO - In questo tag si ritrova lo stesso valore della data con cui valorizzare <Data> solo che nel tag <DataFirma> compare anche l'ora -->
+	 
+	  <Validita>XXXXXXXXXXX</Validita>
+      <!-- OBBLIGAOTORIO  - 4 scenari d’uso:	  
+	  1) se quando il referto viene versato a ParER lo stesso risulta valido, l’elemento <Validita> dovrà essere valorizzato con "REFERTO VALIDO";
+	  2) se quando il referto viene versato a ParER è già stata prodotta una nuova versione dello stesso, l’elemento <Validita> dovrà essere valorizzato con "REFERTO VERSIONATO";
+	  3) se quando il referto viene versato a ParER lo stesso risulta valido, ma successivamente esso viene annullato, allora l'applicativo versante dovrà effettuare due chiamate al sistema di conservazione: una prima chiamata rappresentata dall’Indice SIP in cui  l’elemento <Validita> dovrà essere valorizzato con "REFERTO VALIDO"; una seconda chiamata contenente soltanto i metadati (e non i file) utili ad aggiornare il metadato <Validita> che dovrà essere valorizzato con "REFERTO ANNULLATO". Questa seconda chiamata avviene utilizzando un apposito servizio denominato "AggiuntaAllegatoSync" ;
+	  4) se quando il referto viene versato a ParER lo stesso risulta valido, ma successivamente viene prodotta una nuova versione dello stesso (versionamento per sostituzione)  allora l'applicativo versante dovrà effettuare due chiamate al sistema di conservazione: una prima chiamata rappresentata dall'Indice SIP del referto in cui l’elemento  <Validita> dovrà essere valorizzato con “REFERTO VALIDO”; una seconda chiamata contenente soltanto i metadati (e non i file) utili ad aggiornare il metadato <Validita> che dovrà essere valorizzato con “REFERTO VERSIONATO”. Questa seconda chiamata avviene utilizzando un apposito servizio denominato “AggiuntaAllegatoSync”. Inoltre sarà necessario valorizzare il collegamento tra referti (vedi oltre)   --> 
+	 
+	 <TempoConservazione>XXXXX</TempoConservazione>
+	 <!-- OBBLIGAOTORIO  - Valore ricavato dal piano di conservazione o massimario di scarto. In caso di conservazione permanente inserire la stringa “ILLIMITATA”. In caso sia definito il tempo di conservazione inserire il numero di anni in formato numerico.Qualora l’informazione non sia disponibile inserire la stringa fissa “NON DISPONIBILE” -->
+	 
+	 <Consultabilita>XXXXX</Consultabilita>
+     <!-- OBBLIGATORIO - Il tag andrà valorizzato con la stringa fissa "DATI_STATO_SALUTE" oppure con "DATI_GENETICI" nel caso in cui il refertto contenga dati genetici -->
+	 
+	 <AnonimatoRiserbo>XXXXX</AnonimatoRiserbo>
+     <!-- OBBLIGATORIO - Indicare se presso l’Azienda viene gestito – nei casi previsti dalla legge – l’anonimizzazione del referto (ad esempio utilizzo di codici anagrafici fittizi, indicazione di “anonimo” nel nominativo del paziente). Il metadato dovrebbe essere valorizzato nella maniera più descrittiva possibile (es. “nome di fantasia”, “anagrafica fittizia”, “tutela legge xxxx”). I valori ammessi per questo tag sono: "SI" / "NO" -->
+	 
+	 <DescrizioneAnonimatoRiserbo>XXXXX</DescrizioneAnonimatoRiserbo>
+     <!-- FACOLTATIVO - Il metadato dovrebbe essere valorizzato nella maniera più descrittiva possibile (es. “nome di fantasia”, “anagrafica fittizia”, “tutela legge xxxx”) -->
+	 
+	 <DenominazioneApplicativo>XXXXXXXXXX</DenominazioneApplicativo>
+     <!-- OBBLIGATORIO - Denominazione commerciale dell’applicativo che produce il documento. Qualora l’informazione non sia disponibile inserire la stringa “NON DISPONIBILE” -->
+	 
+	 <VersioneApplicativo>XXXXXXXXXX</VersioneApplicativo>
+     <!-- OBBLIGATORIO - Versione dell’applicativo che produce il documento. Qualora l’informazione non sia disponibile inserire la stringa “NON DISPONIBILE” -->
+	 
+	 <ProduttoreApplicativo>XXXXXXXXXX</ProduttoreApplicativo>
+     <!-- OBBLIGATORIO - Denominazione del produttore dell’applicativo che produce il documento. Qualora l’informazione non sia disponibile inserire la stringa “NON DISPONIBILE” -->
+	 
+	 <IDRefertoApllicativoProduttore>XXXXXXXXXX</IDRefertoApllicativoProduttore>
+     <!-- FACOLTATIVO - Identificativo assegnato originariamente al referto da parte dell'applicativo verticale, nel caso in cui esso non venga già valorizzato nel tag <Numero>-->
+	 
+	 <DenominazioneRepository>XXXXXXXXXX</DenominazioneRepository>
+     <!-- FACOLTATIVO - Nome commerciale del repository  -->
+     
+	 <ProduttoreRepository>XXXX</ProduttoreRepository>
+     <!-- FACOLTATIVO  - Denominazione del produttore del repository -->
+	 
+	 <DataCustodia>aaaa-mm-ggThh:mm:ss</DataCustodia>
+     <!-- FACOLTATIVO -  Data e ora in cui il referto, proveniente dall'applicativo verticale, viene acquisito nel repository  -->
+ 	
+   </DatiSpecifici>
+   
+   <DocumentiCollegati>
+    <DocumentoCollegato>
+   <!-- I tag ricompresi in <DocumentiCollegati> andranno valorizzati con gli identificativi (<ChiaveCollegamento>) dei referti collegati al referto che si sta versando. I collegamenti che andranno metadatati
+   per i referti sono i seguenti:
+   
+    a) nel caso in cui il referto sia stato sottoposto a versionamento per sostituzione. La nuova versione del referto deve puntare al precedente referto versionato. <DocumentoCollegato> sarà quindi usato per metadatare il puntumento alla precedente versione del referto. Qualora la nuova versione del referto presenti lo stesso ID del referto versionato, sarà necessario aggiungere all'ID della nuova versione del referto una stringa (es. _ più numero progressivo della versione) al fine di differenziare gli identificativi dei documenti;
+	b) qualora il referto sia un referto di second opinion (nativo digitale o acquisito su supporto digitale a seguito di scansione). In fase di versamento del referto di second opinin, in <DocumentoCollegato> dovranno essere inserite le informazioni che costituiscono la chiave del referto di primo parere precedentemente versato in conservazione;
+	c) nel caso di produzione di un nuovo referto che integra le informazioni contenute in un referto precedente. Nel sistema di conservazione, i due referti saranno due unità documentarie distinte, ma gestite come tra loro collegate. <DocumentoCollegato> sarà quindi usato per metadatare il puntumento al referto integrato;
+	d) nel caso di produzione di referti parziali e completi (e i complessivi?) o nel caso di collegamento tra il referto di estemporanea e il relativo referto post-operatorio per i referti di Anatomia Patologica 
+	
+	Nota interna: per la gestione del collegamento tra referti versionati (per sostituzione o per integrazione) vedere documento "NOTE_ModelloSIP Referto" -->
+	
+  <ChiaveCollegamento>
+     <Numero>XXXXXX</Numero>
+     
+     <Anno>aaaa</Anno>
+     
+     <TipoRegistro>XXXXXXXXXX</TipoRegistro>
+     <!-- i 3 tag di cui sopra devono essere valorizzati con la chiave identificativa del documento collegato -->
+   </ChiaveCollegamento>
+   
+   <DescrizioneCollegamento>stringa</DescrizioneCollegamento>
+   <!-- il tag andrà valorizzato con una stringa  variabile a seconda delle casistiche a), b), c) e d). La descrizione ha lo scopo di dar conto del tipo e della natura
+    del singolo collegamento:
+    - nel caso di collegamento di cui al punto a) utilizzare come descrizione la stringa "VERSIONAMENTO PER SOSTITUZIONE";
+    - nel caso di collegamento di cui al punto b) utilizzare come descrizione la stringa "SECOND OPINION";
+    - nel caso di collegamento di cui al punto c) utilizzare come descrizione la stringa "VERSIONAMENTO PER INTEGRAZIONE/ADDENDUM";
+    - nel caso di collegamento di cui al punto d) utilizzare come descrizione la stringa "PARZIALE/COMPLETO" o "POST-OPERATORIO";
+Nota interna: per la gestione del collegameto tra referti versionati (per sostituzione o per integrazione) vedere documento "NOTE_ModelloSIP Referto"	-->
+	
+   </DocumentoCollegato>
+   </DocumentiCollegati>
+   
+   <NumeroAllegati>X</NumeroAllegati>
+   <!-- il tag andrà valorizzato con 0 se nel versamento a ParER, al file PDF del referto, non è allegato alcun altro file complementare o integrativo. Se al contrario tali file complementari e integrativi
+   dovessero essere presenti (ad esempio un file testuale del medico a commento, integrazione del referto vero e proprio),  allora ciascuno di essi dovrebbe essere metadatato nella sezione <Allegati> e
+   <NumeroAllegati> dovrebbe essere valorizzato con una cifra numerica pari al numero di occorrenze del tag <Allegato> che popolano <Allegati> -->
+    
+   
+   <NumeroAnnessi>X</NumeroAnnessi>
+   <!-- i documenti annessi che possono essere presenti sono i seguenti:
+   - DOCUMENTO ANNULLATIVO, Documento prodotto dal sistema di refertazione che attesta l’annullamento di un referto prodotto in precedenza.Nota: il versamento del tipo documento “DOCUMENTO ANNULLATIVO” è facoltativo. Il documento annullativo deve essere versato come annesso del referto già presente in conservazione e annullato. L’invio avviene utilizzando un apposito servizio (AggiuntaAllegatiSync) che consente di versare un SIP di documento da aggiungere ad unità documentaria già presente;
+   - ELENCO PRESTAZIONI, Documento che riporta le informazioni su tipo e data di prestazione effettuata e per la quale è stato prodotto il referto. Il documento può essere prodotto in funzione del versamento nel sistema di conservazione delle informazioni sulle prestazioni effettuate qualora queste non siano contenute, per ragioni di numero massimo di caratteri ammessi, all’interno del tag <TipoEDataPrestazione>.
+   Nota: il versamento del tipo documento “ELENCO PRESTAZIONI” è facoltativo e non è richiesto in caso di referto strutturato secondo il tracciato HL7 CDA2 -->
+   
+   <NumeroAnnotazioni>0</NumeroAnnotazioni>
+   <!-- il tag andrà tendenzialmente sempre valorizzato con il valore fisso "0" -->
+   
+   <DocumentoPrincipale>
+      <IDDocumento>X</IDDocumento>
+	  <!-- il tag andrà valorizzato con l'ID originariamente assegnato al documento principale da parte dell'applicativo verticale. -->
+	
+      <TipoDocumento>XXXX</TipoDocumento>
+      <!-- il tag andrà valorizzato con la stringa fissa "REFERTO LABORATORIO"; "REFERTO DIAGNOSTICA PER IMMAGINI"; "REFERTO ANATOMIA PATOLOGICA"; "REFERTO SPECIALISTICA AMBULATORIALE"; "REFERTO MICROBIOLOGIA" -->
+	  
+     <ProfiloDocumento>
+		
+		<Autore>XXXX</Autore>
+       <!-- In questo tag vanno riproposti i soli nominativi (non i codici fiscali) dei medici refertanti di cui al tag <Refertanti>. Nel caso di più medici refertanti utilizzare la seguente
+       sintassi: <Autore>&lt;Nominativo&gt;XXXXXXXXXXXXXXXXXXXXXXXX&lt;/Nominativo&gt;&lt;Nominativo&gt;XXXXXXXXXXXXXXXXX&lt;/Nominativo&gt;</Autore> -->
+    
+	   </ProfiloDocumento>
+    
+	<StrutturaOriginale>
+     <TipoStruttura>DocumentoGenerico</TipoStruttura>
+	 <!-- il tag andrà sempre valorizzato con la stringa fissa "DocumentoGenerico" -->
+	 
+     <Componenti>
+	  
+     <Componente>
+       <ID>XXXXXX</ID>
+       <!-- OBBLIGATORIO - Il tag viene valorizzato con un metadato di natura gestionale, perchè serve a riconciliare in maniera univoca il file inserito nel pacchetto di versamento a ParER con la corrispondente sezione dell'XML
+        di versamento, sempre inserito nel pacchetto di versamento a ParER, e che fa riferimento a quello stesso file. Pertanto il fornitore può decidere di valorizzare tale tag come meglio crede -->
+		
+      <OrdinePresentazione>X</OrdinePresentazione>
+      <!-- OBBLIGATORIO - Ordine in cui deve essere rappresentato il componente (valore uguale a 1 se per il documento è previsto un solo componente) -->
+	  
+	  <TipoComponente>XXXX</TipoComponente>
+      <!-- FACOLTATIVO - Il tag andrà sempre valorizzato con la stringa fissa "Contenuto" -->
+	  
+      <TipoSupportoComponente>xxxxxx</TipoSupportoComponente>
+      <!-- FACOLTATIVO - Inserire la stringa fissa "FILE" oppure "METADATI" in caso di chiamata del servizio di aggiornamento metadati -->
+	  
+      <NomeComponente>XXXX</NomeComponente>
+      <!-- OBBLIGATORIO - Il tag andrà valorizzato con il nome che il file presenta nell'applicativo verticale o nel repository -->
+      
+      <FormatoFileVersato>XXXX</FormatoFileVersato>
+      <!-- OBBLIGATORIO - Il tag andrà valorizzato con l'estensione del formato file (as es. "PDF" nel caso di file senza firma digitale o con la stringa "PDF.P7M" nel caso di un file con firma digitale) -->
+     
+	  <HashVersato>XXXX</HashVersato>
+      <!-- OBBLIGAOTRIO - Hash del file mantenuto nell'applicativo verticale o nel repository. Tag da valorizzare obbligatoriamente ai sensi del DPCM 13 novembre 2014, art. 9 comma f   -->
+      
+	  <UrnVersato>XXXX</UrnVersato>
+      <!-- FACOLTATIVO - Il tag andrà valorizzato con l'urn che individua il file all'interno nell'applicativo verticale o nel repository   -->
+	  
+      <IDComponenteVersato>XXXX</IDComponenteVersato>
+      <!-- FACOLTATIVO - Il tag andrà valorizzato con l'ID assegnato al file dall'applicativo verticale o dal repository -->
+	  
+	  <!-- I seguenti tre tag riguardano il riferimento temporale da utilizzare per la verifica della firma digitale. La data da utilizzare come riferimento temporale è la data e ora di firma del referto tratta dal DB dell'applicativo verticale e non dalla busta crittografica. Nel caso in cui tale informazione non sia disponibile, i tag <RiferimentoTemporale> e <DescrizioneRiferimentoTemporale> non devono essere riportati nell'Indice SIP e il tag <UtilizzoDataFirmaPerRifTemp> andrà valorizzato con "true". 
+	  Nel caso in cui il file non presenti la firma digitale, i tre tag non dovranno comparire nell'XML di versamento -->
+	  
+   
+      <UtilizzoDataFirmaPerRifTemp>XXXXX</UtilizzoDataFirmaPerRifTemp>
+	  
+		  
+      <RiferimentoTemporale>aaaa-mm-ggThh:mm:ss</RiferimentoTemporale>
+	  <!-- il tag andrà valorizzato solo nel caso di file con firma digitale, con la data e ora di firma tratta dal DB dell'applicativo verticale e non dalla busta crittografica.  -->
+	 
+      <DescrizioneRiferimentoTemporale>DATA_FIRMA_REGISTRATA_IN_DB_APPLICATIVO_PRODUTTORE</DescrizioneRiferimentoTemporale>
+	  <!-- il tag andrà valorizzato solo nel caso di file con firma digitale, con la stringa fissa "DATA_FIRMA_REGISTRATA_IN_DB_APPLICATIVO_PRODUTTORE".  -->
+	  
+   </Componente>
+ </Componenti>
+</StrutturaOriginale>
+</DocumentoPrincipale>
+<Allegati>
+ <Allegato>
+       <IDDocumento>XXXXXXXXXXXXXXXXX</IDDocumento>
+       <TipoDocumento>XXXXXXXXXXXXXXXXXXXXXX</TipoDocumento>
+	    <!-- il tag andrà valorizzato con la tipologia di allegato (ad esempio "nota testuale" etc. etc.) -->
+	   
+       <ProfiloDocumento>
+         <Descrizione>XXXXXXXXXXXXXXXXX</Descrizione>
+         <Autore>XXXXXXXXXXXXXXXXXXX</Autore>
+       </ProfiloDocumento>
+        <StrutturaOriginale>
+         <Componenti>
+            <Componente>
+               <ID>XXX</ID>
+               <OrdinePresentazione>X</OrdinePresentazione>
+               <TipoComponente>CONTENUTO</TipoComponente>
+               <TipoSupportoComponente>FILE</TipoSupportoComponente>
+               <NomeComponente>XXXXXXXXXXXXXXXXXXXX</NomeComponente>
+               <FormatoFileVersato>XXX</FormatoFileVersato>
+               <HashVersato>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</HashVersato>
+               <UrnVersato>XXXXXXXXXXXXXXXXXXXXXXXX</UrnVersato>
+               <IDComponenteVersato>XXXXXXXXXXX</IDComponenteVersato>
+            </Componente>
+         </Componenti>
+        </StrutturaOriginale>
+    </Allegato> 
+  </Allegati>
+   <Annessi>
+      <Annesso>
+         <IDDocumento>XXXXXX</IDDocumento>
+         <TipoDocumento>XXXXXXX</TipoDocumento>
+         <!-- Il tag può essere valorizzato con:
+         - DOCUMENTO ANNULLATIVO
+         - ELENCO PRESTAZIONI -->
+         
+         <ProfiloDocumento>
+            <Descrizione>XXXXXXXXXXXXXXXXX</Descrizione>
+         <Autore>XXXXXXXXXXXXXXXXXXX</Autore>
+         </ProfiloDocumento>
+         <StrutturaOriginale>
+            <TipoStruttura>DocumentoGenerico</TipoStruttura>
+            <Componenti>
+               <Componente>
+                  <ID>XXXX</ID>
+                  <OrdinePresentazione>X</OrdinePresentazione>
+                  <TipoComponente>Contenuto</TipoComponente>
+                  <TipoSupportoComponente>FILE</TipoSupportoComponente>
+                  <NomeComponente>XXXXX</NomeComponente>
+                  <FormatoFileVersato>XXX</FormatoFileVersato>
+                  <HashVersato>XXXXXX</HashVersato>
+                  <IDComponenteVersato>XXXX</IDComponenteVersato>
+                  <!-- I seguenti tre tag riguardano il riferimento temporale da utilizzare per la verifica della firma digitale. La data da utilizzare come riferimento temporale del tipo documento annesso "DOCUMENTO ANNULLATIVO" è la data e ora di firma del documento tratta dal DB dell'applicativo verticale e non dalla busta crittografica. Nel caso in cui tale informazione non sia disponibile, i tag <RiferimentoTemporale> e <DescrizioneRiferimentoTemporale> non devono essere riportati nell'Indice SIP e il tag <UtilizzoDataFirmaPerRifTemp> andrà valorizzato con "true".  Nel caso in cui il file non presenti la firma digitale, i tre tag non dovranno comparire nell'XML di versamento -->
+
+
+      <UtilizzoDataFirmaPerRifTemp>XXXXX</UtilizzoDataFirmaPerRifTemp>
+
+
+      <RiferimentoTemporale>aaaa-mm-ggThh:mm:ss</RiferimentoTemporale>
+	  <!-- il tag andrà valorizzato solo nel caso di file con firma digitale, con la data e ora di firma tratta dal DB dell'applicativo verticale e non dalla busta crittografica.  -->
+
+      <DescrizioneRiferimentoTemporale>DATA_FIRMA_REGISTRATA_IN_DB_APPLICATIVO_PRODUTTORE</DescrizioneRiferimentoTemporale>
+	  <!-- il tag andrà valorizzato solo nel caso di file con firma digitale, con la stringa fissa "DATA_FIRMA_REGISTRATA_IN_DB_APPLICATIVO_PRODUTTORE".  -->
+               </Componente>
+            </Componenti>
+         </StrutturaOriginale>
+      </Annesso>
+   </Annessi>
+</UnitaDocumentaria> 

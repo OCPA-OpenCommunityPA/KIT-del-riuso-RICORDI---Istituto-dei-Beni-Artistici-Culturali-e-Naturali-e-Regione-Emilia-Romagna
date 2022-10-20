@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UnitaDocumentaria xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Intestazione>
+		<Versione>1.4</Versione>
+		<Versatore>
+			<Ambiente>PARER_TEST</Ambiente>
+			<!-- Il tag sarà valorizzato con:
+           - "PARER_TEST" per i versamenti in ambiente di test
+           - "PARER" per i versamenti in ambiente di produzione -->
+		   
+			<Ente>XXXXX</Ente>
+			<!-- Stringa che identifica l'ente produttore-->
+			
+			<Struttura>XXXXX</Struttura>
+			<!-- Denominazione della struttura. Normalmente è utilizzato il codice dell’AOO registrato all’IPA -->
+			
+			<UserID>XXXXXXXXXX</UserID>
+			<!-- Denominazione dell'utente versatore solitamente composto da:"NOME
+			APPLICATIVO VERSANTE_DENOMINAZIONE ENTE". Il valore è seguito dal suffisso
+			"_PRE" in ambiente di test. Il valore viene fornito da ParER -->
+			
+		</Versatore>
+		<Chiave>
+			<Numero>XXXXXXXX</Numero>
+			<!-- Numero di registrazione del documento nel registro indicato nel metadato <TipoRegistro>. Il numero deve essere univoco nell’ambito del registro e dell’anno -->
+			
+			<Anno>AAAA</Anno>
+			<!-- Anno di competenza a cui si riferiscono le registrazioni  -->
+			
+			<TipoRegistro>XXXXX</TipoRegistro>
+			<!-- Denominazione o codice attribuita/o dal Produttore  al registro. In generale per registro si intende in alternativa:
+			- repertorio in cui sono registrati in ordine progressivo i documenti ad esso afferenti (ex art. 53, D.P.R. 28/12/2000 n. 445). La denominazione o codice viene attribuita dall’Ente;
+			-   contesto applicativo/documentale nell’ambito del quale avviene l’assegnazione dell’identificativo progressivo e univoco. La denominazione o codice del registro viene concordata con ParER. 
+			Nel caso in cui l’Ente non utilizzi un apposito repertorio oppure non sia individuabile il contesto applicativo/documentale, può essere assunta la stringa fissa convenzionale RIVA_VENDITE" (per il registro iva vendite),  "RIVA_ACQUISTI" (per il registro iva acquisti) e "RIVA_CORRISPETTIVI" (per il registro dei corrispettivi)
+			In questo caso il metadato <Numero> potrà essere valorizzato con [Codice identificativo del registro/sezionale]_[mese di riferimento del registro] oppure, se prodotto annualmente, [Codice identificativo del registro/sezionale]_[anno di riferimento del registro].  Se il registro fa riferimento a più sezionali ed è prodotto annualmente, il metadato <Numero> può essere valorizzato con “1”. Se invece il registro viene prodotto secondo periodicità diverse, ad esempio mensilmente, può essere utilizzato il numero del mese a cui si riferiscono le registrazioni.-->
+			
+		</Chiave>
+		<TipologiaUnitaDocumentaria>REGISTRO IVA</TipologiaUnitaDocumentaria>
+		<!-- Il tag va valorizzato con la stringa fissa "REGISTRO IVA"  -->
+		
+	</Intestazione>
+	<Configurazione>
+    <TipoConservazione>FISCALE</TipoConservazione>
+	<!-- Indica la modalità di conservazione a cui sono sottoposti i documenti informatici rilevanti a fini tributari in conformità con quanto previsto dalla normativa vigente (DMEF 17 giugno 2014)  -->
+  
+    <ForzaAccettazione>false</ForzaAccettazione>
+    <!-- Il parametro è generalmente valorizzato con false. Se modificato a true significa che si accetta di versare anche documenti con firma non valida, scaduta, o con problemi di formato del file versato.  -->
+    
+    <ForzaConservazione>false</ForzaConservazione>
+    <!-- Il parametro regola l'acquisizione  del pacchetto di versamento in relazione alla presenza o meno di file non firmati. Se valorizzato con true significa che si accetta di versare documenti non firmati  -->
+    
+    <ForzaCollegamento>false</ForzaCollegamento>
+    <!-- Il parametro consente il versamento di unità documentarie collegate ad altre unità documentarie già versate nel sistema di conservazione. Se si reputa necessario il collegamento di unità documentarie ad altre non ancora versate nel sistema il parametro va valorizzato con true -->
+
+  </Configurazione>
+		<ProfiloArchivistico>
+    <!-- La sezione <ProfiloArchivistico> va valorizzata nel caso in cui l'unità documentaria venga classificata e fascicolata e tale informazione sia presente come dato strutturato all'interno dell'applicativo.
+    È possibile valorizzare solo la Classifica e non i campi descrittivi del Fascicolo nel caso in cui l’Unità documentaria sia stata solo classificata e non fascicolata. Nel caso in cui i dati non siano a disposizione l'intera sezione va omessa dall'xml di versamento -->
+		<FascicoloPrincipale>
+			<Classifica>XXXXXXXXXXXXXXXX</Classifica>
+			<!-- Il metadato va valorizzato con l'indicazione del codice di classificazione e la descrizione di ciascun componente gerarchico -->
+		<Fascicolo>
+				<Identificativo>XXXXX</Identificativo>
+				<!-- inserire la stringa con voce di titolario + numero e anno del fascicolo principale -->
+
+				<Oggetto>XXXXX</Oggetto>
+				<!-- inserire la stringa con l'oggetto del fascicolo principale -->
+
+			</Fascicolo>
+			<SottoFascicolo>
+				<!-- Opzionale. Da inserire solo se gestito nell'applicativo in uso -->
+
+					<Identificativo>XXXXXXXXXX</Identificativo>
+					<!-- Codice che identifica l'eventuale sottofascicolo a cui è stato assegnato il documento -->
+
+					<Oggetto>XXXXXXXXXXXXXXXXXXXX</Oggetto>
+					<!-- Valore relativo all'oggetto o titolo dell'eventuale sottofascicolo a cui è stato assegnato il documento -->
+
+			</SottoFascicolo>
+		</FascicoloPrincipale>
+		<FascicoliSecondari>
+		<!--In questa sezione vanno indicate le informazioni relative alle eventuali Classifiche secondarie, Fascicoli e Sottofascicoli secondari in cui sia stata classificata o fascicolata l’Unità documentaria. Valgono le stesse considerazioni effettuate per il fascicolo principale   -->
+			<FascicoloSecondario>
+				<Classifica>XXXXXXXXX</Classifica>
+				<!-- inserire la stringa con eventuale voce di titolario di classificazione secondaria -->
+
+				<Fascicolo>
+					<Identificativo>XXXXXXXXX</Identificativo>
+					<!-- inserire la stringa con voce di titolario + numero e anno di fascicolo secondario -->
+
+					<Oggetto>XXXXXXX</Oggetto>
+					<!-- inserire la stringa con l'oggetto del fascicolo secondario -->
+
+				</Fascicolo>
+			</FascicoloSecondario>
+		</FascicoliSecondari>
+	</ProfiloArchivistico>
+	<ProfiloUnitaDocumentaria>
+		<Oggetto>XXXXXXXXX</Oggetto>
+		<!-- Registro IVA ["vendite o "acquisti" o "corrispettivi" [denominazione o codice del registro/sezionale] - [descrizione del registro/sezionale] dal n. […] del […] al n.[…] del […]. Se il registro fa riferimento a più registri/sezionali il metadato <Oggetto> andrà valorizzato con “Registro IVA ["vendite o "acquisti"] del [mese] oppure dell’ [anno]” -->
+		
+		<Data>AAAA-MM-GG</Data>
+		<!-- La data con cui valorizzare questo campo può corrispondere in alternativa a:
+	     - data significativa per il soggetto produttore
+		 - data di stampa o di estrazione  del documento se nota. Se date diverse riportare l'ultima in ordine cronologico
+		 - data di firma se nota. Se date diverse riportare l'ultima in ordine cronologico -->
+		
+	</ProfiloUnitaDocumentaria>
+	
+	<DatiSpecifici>
+		<VersioneDatiSpecifici>1.0</VersioneDatiSpecifici>
+		
+		<NumeroRegistrazioneIniziale>XXXXXXXXXXXX</NumeroRegistrazioneIniziale>
+		<!-- OBBLIGATORIO. Numero della prima registrazione sul registro. Se il registro delle vendite o degli acquisti fa riferimento a più registri/sezionali, inserire la stringa fissa “NON PERTINENTE” -->
+		
+		<NumeroRegistrazioneFinale>XXXXXXXXXXXX</NumeroRegistrazioneFinale>
+		<!-- OBBLIGATORIO. Numero dell'ultima registrazione sul registro. Se il registro delle vendite o degli acquisti fa riferimento a più registri/sezionali, inserire la stringa fissa “NON PERTINENTE” -->
+		
+		<NumeroRegistrazioni>XXXXXXXXXXXX</NumeroRegistrazioni>
+		<!-- OBBLIGATORIO. Numero complessivo delle registrazioni -->
+		
+		<DataInizioRegistrazioni>aaaa-mm-gg</DataInizioRegistrazioni>
+		<!-- OBBLIGATORIO. Data della prima registrazione -->
+		
+		<DataFineRegistrazioni>aaaa-mm-gg</DataFineRegistrazioni>
+		<!-- OBBLIGATORIO. Data dell'ultima registrazione -->
+		
+		<NumeroPaginaIniziale>XXXXXXXXXXXXX</NumeroPaginaIniziale>
+		<!-- FACOLTATIVO. Numero della prima pagina del registro -->
+		
+		<NumeroPaginaFinale>XXXXXXXXXXXXX</NumeroPaginaFinale>
+		<!-- FACOLTATIVO. Numero dell'ultima pagina del registro -->
+		
+		<NumeroPagine>XXXXXXXXXXX</NumeroPagine>
+		<!-- FACOLTATIVO. Numero di pagine di cui è composto il registro-->
+		
+		<Denominazione>XXXX</Denominazione>
+        <!-- OBBLIGATORIO. Il tag va valorizzato con la denominazione estesa dell'Ente -->
+		
+	    <CF>XXX</CF>
+        <!-- OBBLIGATORIO. Il tag va valorizzato con il codice fiscale dell'Ente -->
+      
+        <PIVA>XXX</PIVA>
+        <!-- OBBLIGATORIO. Il tag va valorizzato con la Partita IVA dell'Ente o, qualora non presente, con la stringa fissa "Non assegnata"-->
+		
+		<AnnoDiCompetenza>XXX</AnnoDiCompetenza>
+        <!-- OBBLIGATORIO. Anno di competenza del Registro IVA -->
+	  
+	    <Originatore>XXX</Originatore>
+	    <!-- OBBLIGATORIO. Denominazione dell'Unità o Settore responsabile della produzione del documento. Qualora l’informazione non sia disponibile inserire la stringa fissa “NON DISPONIBILE” -->
+	  
+	    <Responsabile>XXXXXXXXXX</Responsabile>
+	    <!-- OBBLIGATORIO. Nominativo del responsabile dell’Unità o del Settore che ha prodotto il documento. Qualora l’informazione non sia disponibile inserire la stringa fissa “NON DISPONIBILE” -->
+	  
+	    <Operatore>XXXXXXXXXX</Operatore>
+	    <!-- OBBLIGATORIO. Nominativo dell’operatore che ha creato il documento. Può essere valorizzato con la denominazione del sistema in caso di generazione automatica del documento. Qualora l’informazione non sia disponibile inserire la stringa fissa “NON DISPONIBILE”  -->
+	  
+	    <RegistroAltraRegistrazione>XXXXXXXXX</RegistroAltraRegistrazione>
+	    <!-- OBBLIGATORIO. Denominazione del registro in cui è avvenuta l’eventuale e ulteriore registrazione del documento. Qualora il documento non sia oggetto di altra registrazione, inserire la stringa “NON DISPONIBILE” -->
+	  
+	    <AnnoAltraRegistrazione>XXXXXXXXX</AnnoAltraRegistrazione>
+	    <!-- OBBLIGATORIO. Anno dell’eventuale ulteriore registrazione associata al documento. Qualora il documento non sia oggetto di altra registrazione, inserire la stringa “NON DISPONIBILE” -->
+		
+	    <NumeroAltraRegistrazione>XXXXXXXXXX</NumeroAltraRegistrazione>
+	    <!-- OBBLIGATORIO. Numero dell’eventuale ulteriore registrazione associata al documento. Qualora il documento non sia oggetto di altra registrazione, inserire la stringa “NON DISPONIBILE” -->
+		
+	    <DataAltraRegistrazione>XXXXXXX</DataAltraRegistrazione>
+	    <!-- OBBLIGATORIO. Data dell’eventuale ulteriore registrazione associata al documento. Qualora il documento non sia oggetto di altra registrazione, inserire la stringa “NON DISPONIBILE” -->
+		
+	    <TempoConservazione>XXX</TempoConservazione>
+        <!-- OBBLIGATORIO. Valore ricavato dal piano di conservazione o massimario di scarto.
+		In caso di conservazione permanente inserire la stringa “ILLIMITATA”. In caso sia definito il tempo di conservazione inserire il numero di anni in formato numerico.
+		Qualora l’informazione non sia disponibile inserire la stringa fissa “NON DISPONIBILE”  -->
+	  
+	    <Consultabilita>XXXXXXXXXXXXXXX</Consultabilita>
+		<!-- OBBLIGATORIO. Il metadato indica la tipologia di dati contenuti all’interno del documento, sia ai sensi della normativa vigente in materia di privacy (D. Lgs. 196/2003 e atti del Garante) sia in materia di beni culturali (D. Lgs. 42/2004).
+		Il metadato può assumere i seguenti valori:
+          - RISERVATO
+          - NON RISERVATO
+          - DATI PERSONALI
+          - DATI SENSIBILI
+          - DATI GENETICI
+          - DATI GIUDIZIARI
+          - DATI STATO SALUTE
+          - DATI VITA SESSUALE
+          - DATI RAPPORTI RISERVATI FAMILIARI
+          - NON PRECISATO -->
+      
+        <DenominazioneApplicativo>XXXXXX</DenominazioneApplicativo>  
+        <!-- OBBLIGATORIO. Denominazione commerciale dell’applicativo che produce il documento. Qualora l’informazione non sia disponibile inserire la stringa “NON DISPONIBILE”-->
+      
+        <VersioneApplicativo>XXXXXX</VersioneApplicativo> 
+        <!-- OBBLIGATORIO. Versione dell’applicativo che produce il documento. Qualora l’informazione non sia disponibile inserire la stringa “NON DISPONIBILE -->
+	  
+	    <ProduttoreApplicativo>XXXXXX</ProduttoreApplicativo> 
+         <!-- OBBLIGATORIO. Denominazione del produttore dell’applicativo che produce il documento. Qualora l’informazione non sia disponibile inserire la stringa “NON DISPONIBILE” --> 
+			
+	</DatiSpecifici>
+	<DocumentiCollegati>
+		<DocumentoCollegato>
+		<!-- Nel caso in cui il Registro IVA venga registrato al protocollo generale,  con il collegamento si ha la possibilità di collegare il documento in esame alla registrazione di protocollo. -->
+			<ChiaveCollegamento>
+				<Numero>XXXXXX</Numero>
+				<!-- Numero della registrazione di protocollo collegata -->
+				
+				<Anno>AAAA</Anno>
+				<!-- Anno della registrazione di protocollo collegata -->
+				
+				<TipoRegistro>XXXX</TipoRegistro>
+				<!-- Denominazione del Registro di protocollo generale collegato -->
+				
+			</ChiaveCollegamento>
+			<DescrizioneCollegamento>XXXXX</DescrizioneCollegamento>
+			<!-- Descrizione della motivazione del collegamento. Inserire stringa così composta: "REGISTRAZIONE DI PROTOCOLLO"  -->
+		</DocumentoCollegato>
+		 </DocumentiCollegati>
+	
+	<NumeroAllegati>X</NumeroAllegati>
+	<!-- Il tag va valorizzato con il numero esatto di allegati eventualmente presenti nell'unità documentaria e che saranno descritti nelle apposite sezioni dell'xml -->
+	<NumeroAnnessi>0</NumeroAnnessi>
+	<NumeroAnnotazioni>0</NumeroAnnotazioni>
+	
+	
+	<DocumentoPrincipale>
+		<IDDocumento>XXXXXXX</IDDocumento>
+		<!-- ID del registro assegnato dal sistema versante -->
+		
+		<TipoDocumento>REGISTRO IVA</TipoDocumento>
+		<!-- Il tag va valorizzato con la stringa fissa "REGISTRO IVA"  -->
+		
+		<ProfiloDocumento>
+			<Descrizione>XXXXXXXXXX</Descrizione>
+			<!-- Descrizione del registro. Il tag può non essere valorizzato -->
+			
+			<Autore>XXXXXXXXXXXXX</Autore>
+			<!-- Nominativo dell'eventuale firmatario-->
+			
+		</ProfiloDocumento>
+		<StrutturaOriginale>
+			<TipoStruttura>DocumentoGenerico</TipoStruttura>
+			<Componenti>
+				<Componente>
+				<ID>XXXXXXX</ID>
+          <!-- OBBLIGATORIO. Identificativo del componente assegnato dall'applicativo -->
+          
+          <OrdinePresentazione>1</OrdinePresentazione>
+          <!-- OBBLIGATORIO. Indica l'ordine di successione del componente all'interno del documento. E' univoco e sequenziale a partire da 1 per ogni documento -->
+		  
+          <TipoComponente>Contenuto</TipoComponente>
+          <!-- FACOLTATIVO. Rappresenta la tipologia del componente. Può non essere valorizzato nell'xml e, in questo caso, assume il valore di default "Contenuto" -->
+		  
+		  <TipoSupportoComponente>FILE</TipoSupportoComponente>
+          <!-- FACOLTATIVO. Individua il tipo di supporto del componente. Il tag può essere omesso e in questo caso assume il valore di default "FILE" -->
+          
+          <NomeComponente>XXXXXXXXXXXXX</NomeComponente>
+          <!-- OBBLIGATORIO. Nome del componente memorizzato nell'applicativo comprensivo dell'estensione -->
+          
+          <FormatoFileVersato>XXX</FormatoFileVersato>
+          <!-- OBBLIGATORIO. Formato del file versato -->
+          
+          <HashVersato>XXXXXXXXXXXXXXx</HashVersato>
+          <!-- OBBLIGATORIO. Impronta del documento informatico calcolata dal sistema e memorizzata nell'applicativo. Tag da valorizzare obbligatoriamente ai sensi del DPCM 13 novembre 2014, art. 9 comma f -->
+		  
+		  <UrnVersato>XXXXXXXXXXXXXXx</UrnVersato>
+		  <!--  FACOLTATIVO. URN del documento -->
+		  
+		  <IDComponenteVersato>XXXXXXXXXXXXX</IDComponenteVersato>
+		  <!-- FACOLTATIVO. ID del componente versato -->	
+		
+		  <UtilizzoDataFirmaPerRifTemp>FALSE</UtilizzoDataFirmaPerRifTemp>
+		  
+          <RiferimentoTemporale>aaaa-mm-ggThh:mm:ss</RiferimentoTemporale>
+	      <!-- Il tag andrà valorizzato solo nel caso di file con firma digitale, con una delle seguenti date:
+		  1. Data e ora di protocollazione, nel caso in cui il documento sia registrato a protocollo. Il riferimento temporale contenuto nella segnatura di protocollo costituisce un riferimento temporale opponibile a terzi ai sensi dell’art. 41 del DPCM 22 febbraio 2013;
+		  2. Data e ora di repertoriazione, nel caso in cui il documento sia repertoriato in apposito registro definito nel sistema di gestione documentale;
+		  3. Data e ora di firma ricavate dal DB del sistema software che produce il documento e non dalla busta crittografica della firma;
+		  4. Data e ora di versamento nel sistema di conservazione. In base all’art. 41 del DPCM 22 febbraio 2013, costituisce un riferimento temporale opponibile a terzi, il  riferimento  temporale  ottenuto  attraverso  la  procedura di conservazione dei documenti in conformità alle norme vigenti, ad opera di un pubblico ufficiale o di una pubblica amministrazione. In questo caso i tag <RiferimentoTemporale> e <DescrizioneRiferimentoTemporale> non devono essere riportati nell'Indice SIP -->
+	 
+          <DescrizioneRiferimentoTemporale>XXXXXX</DescrizioneRiferimentoTemporale>
+		  <!-- Il tag andrà valorizzato in funzione della data/ora riportata nel tag precedente con:
+		  - "DATA_PROTOCOLLAZIONE" (caso 1)
+		  - "DATA_REPERTORIAZIONE" (caso 2)
+		  - "DATA_FIRMA_REGISTRATA_IN_DB_APPLICATIVO_PRODUTTORE" (caso 3) -->
+					
+				</Componente>
+			</Componenti>
+		</StrutturaOriginale>
+	</DocumentoPrincipale>
+</UnitaDocumentaria>
+	
+			
+
+
+
+
+
+
+
+

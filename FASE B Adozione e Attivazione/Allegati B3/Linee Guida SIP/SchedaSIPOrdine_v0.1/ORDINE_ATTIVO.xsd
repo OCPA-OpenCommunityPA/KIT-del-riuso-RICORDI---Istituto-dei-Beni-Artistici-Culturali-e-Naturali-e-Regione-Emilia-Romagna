@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="DatiSpecifici" type="DatiSpecificiType"/>
+  <xs:complexType name="DatiSpecificiType">
+    <xs:sequence>
+	   <xs:element name="VersioneDatiSpecifici" type="xs:token"/>
+	   <xs:element name="DenominazioneDestinatario" type="NoEmptyString" minOccurs="1"/>
+	   <xs:element name="TipoDenominazioneDestinatario" type="NoEmptyString" minOccurs="1"/>
+	   <xs:element name="CFDestinatario" type="TokenNVMax16Type"  minOccurs="1"/>
+	   <xs:element name="PIVADestinatario" type="TokenNVMax13Type"  minOccurs="1"/>
+	   <xs:element name="DocumentoOriginatore" type="xs:string" minOccurs="0"/>
+	   <xs:element name="Originatore" type="NoEmptyString" minOccurs="1"/>
+	   <xs:element name="Responsabile" type="NoEmptyString" minOccurs="1"/>
+	   <xs:element name="Operatore" type="NoEmptyString" minOccurs="1"/>
+	   <xs:element name="RegistroAltraRegistrazione" type="NoEmptyString" minOccurs="1"/>
+	   <xs:element name="AnnoAltraRegistrazione" type="NoEmptyString" minOccurs="1"/>
+	   <xs:element name="NumeroAltraRegistrazione" type="NoEmptyString" minOccurs="1"/>
+	   <xs:element name="DataAltraRegistrazione" type="NoEmptyString" minOccurs="1"/>
+	    <xs:element name="TempoConservazione" type="NoEmptyString" minOccurs="1"/>
+	   <xs:element name="Consultabilita" minOccurs="1" maxOccurs="1">
+       <xs:simpleType>
+          <xs:restriction base="xs:string">
+		    <xs:enumeration value="RISERVATO"/>
+            <xs:enumeration value="NON RISERVATO"/>
+            <xs:enumeration value="DATI PERSONALI"/>
+			<xs:enumeration value="DATI SENSIBILI"/>
+			<xs:enumeration value="DATI GENETICI"/>
+			<xs:enumeration value="DATI GIUDIZIARI"/>
+			<xs:enumeration value="DATI STATO SALUTE"/>
+			<xs:enumeration value="DATI VITA SESSUALE"/>
+			<xs:enumeration value="DATI RAPPORTI RISERVATI FAMILIARI"/>
+			<xs:enumeration value="NON PRECISATO"/>
+          </xs:restriction>
+        </xs:simpleType>
+     </xs:element>
+	 <xs:element name="DenominazioneApplicativo" type="NoEmptyString" minOccurs="1"/>
+	 <xs:element name="VersioneApplicativo" type="NoEmptyString" minOccurs="1"/>
+	 <xs:element name="ProduttoreApplicativo" type="NoEmptyString" minOccurs="1"/>
+     </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="NoEmptyString">
+            <xs:restriction base="xs:string">
+                <xs:minLength value="1"/>
+                </xs:restriction>
+        </xs:simpleType>
+  	<xs:simpleType name="TokenNVMax16Type">
+		<xs:restriction base="xs:token">
+			<xs:minLength value="11"/>
+			<xs:maxLength value="16"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TokenNVMax13Type">
+		<xs:restriction base="xs:token">
+			<xs:minLength value="11"/>
+			<xs:maxLength value="13"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
+
+
+

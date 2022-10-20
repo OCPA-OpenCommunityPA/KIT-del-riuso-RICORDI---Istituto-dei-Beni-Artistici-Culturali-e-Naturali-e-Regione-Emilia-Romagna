@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="DatiSpecifici" type="DatiSpecificiType"/>
+  <xs:complexType name="DatiSpecificiType">
+    <xs:sequence>
+      <xs:element name="VersioneDatiSpecifici" type="xs:token"/>
+      <xs:element name="Data_inizio_periodo_riferimento" minOccurs="1" maxOccurs="1" type="StringNonVuotoType"/>
+	  <xs:element name="Data_fine_periodo_riferimento" minOccurs="1" maxOccurs="1" type="StringNonVuotoType"/>
+      <xs:element name="PagineTotali" minOccurs="0" maxOccurs="1" type="xs:integer"/>
+	</xs:sequence>
+  </xs:complexType>
+    <xs:simpleType name="StringNonVuotoType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
+	
+	
+	  
+	  
+	 

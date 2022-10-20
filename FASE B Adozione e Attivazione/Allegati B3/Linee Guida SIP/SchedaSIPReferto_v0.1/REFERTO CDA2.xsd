@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="DatiSpecifici" type="DatiSpecificiType"/>
+  <xs:complexType name="DatiSpecificiType">
+    <xs:sequence>
+      <xs:element name="VersioneDatiSpecifici" type="xs:token"/>
+	  <xs:element name="AziendaErogante" type="xs:string" minOccurs="0" maxOccurs="1"/>
+	  <xs:element name="StrutturaErogante" type="nonEmptyString"/>
+	  <xs:element name="IDStrutturaErogante" type="nonEmptyString"/>
+	  <xs:choice minOccurs="1" maxOccurs ="2">
+              <xs:element name="IDPazienteAnagraficaLocale" type="xs:string"/>
+              <xs:element name="IDPazienteAnagraficaAziendale" type="xs:string"/>
+      </xs:choice>
+	 <xs:element name="CognomePaziente" type="nonEmptyString"/>
+         <xs:element name="NomePaziente" type="nonEmptyString"/>
+         <xs:element name="DataNascitaPaziente" type="xs:date" minOccurs="1" maxOccurs="1"/>
+         <xs:element name="LuogoNascitaPaziente" type="nonEmptyString"/>
+	 <xs:element name="Refertanti" type="nonEmptyString"/>
+	 <xs:element name="TipoProcedura" type="xs:string" minOccurs="0" maxOccurs="1"/>
+	 <xs:element name="IdCampione" type="nonEmptyString"/>
+	 <xs:element name="IdEsame" type="nonEmptyString"/>
+	 <xs:choice minOccurs ="1" maxOccurs ="2">
+              <xs:element name="AccessionNumber" type="xs:string"/>
+              <xs:element name="IDStudioDICOM" type="xs:string"/>
+     </xs:choice>
+	 <xs:element name="DataFirma" type="xs:dateTime" minOccurs="1" maxOccurs="1"/>
+	 <xs:element name="Validita" type="nonEmptyString"/>
+	 <xs:element name="TempoConservazione" type="nonEmptyString"/>
+	 <xs:element name="Consultabilita" minOccurs="1" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="DATI_STATO_SALUTE"/>
+            <xs:enumeration value="DATI_GENETICI"/>
+          </xs:restriction>
+        </xs:simpleType>
+     </xs:element>
+         <xs:element name="AnonimatoRiserbo" type="nonEmptyString"/>
+         <xs:element name="DescrizioneAnonimatoRiserbo" type="xs:date" minOccurs="0" maxOccurs="1"/>
+         <xs:element name="DenominazioneApplicativo" type="nonEmptyString"/>
+         <xs:element name="VersioneApplicativo" type="nonEmptyString"/>
+         <xs:element name="ProduttoreApplicativo" type="nonEmptyString"/>
+         <xs:element name="IDRefertoApplicativoProduttore" type="xs:string" minOccurs="0" maxOccurs="1"/>
+         <xs:element name="DenominazioneRepository" type="xs:string" minOccurs="0" maxOccurs="1"/>
+	 <xs:element name="ProduttoreRepository" type="xs:string" minOccurs="0" maxOccurs="1"/>
+	 <xs:element name="DataCustodia" type="xs:dateTime" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="nonEmptyString">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,191 @@
+<?xml version="1.4" encoding="utf-8"?>
+<UnitaDocumentaria xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <Intestazione>
+	  <Versione>1.X</Versione>
+	  <!-- Valore comunicato da Parer -->
+      <Versatore>
+      
+	  <Ambiente>XXXXXXX</Ambiente>
+      <!-- Obbligatorio. Il tag sarà valorizzato con:
+           - "PARER_TEST" per i versamenti in ambiente di test
+           - "PARER" per i versamenti in ambiente di produzione -->   
+		
+	  <Ente>XXXXXXXX</Ente>
+      <!-- Obbligatorio. Denominazione dell'ente, comunicato da Parer, e configurato nell'ambiente.  -->
+      
+      <Struttura>XXXXXXX</Struttura>
+      <!-- Obbligatorio. Denominazione della struttura, comunicata da Parer, e configurato nell'ambiente. Solitamente coincide con il codice AOO o con il codice IPA(in assenza di codice AOO) --> 
+      
+      <UserID>XXXXXXX</UserID>
+      <!-- Obbligatorio. Denominazione dell'utente versatore solitamente composto da: "NOME APPLICATIVO VERSANTE_DENOMINAZIONE ENTE". Il valore è seguito dal suffisso "_PRE" in ambiente di test
+      Il valore viene fornito da Parer -->
+            
+    </Versatore>
+    <Chiave>
+      <Numero>XXXXXX</Numero>
+      <!-- Numero che identifica in maniera univoca il messaggio: hash del file (generato preferibilmente con algoritmo MD5) o altro identificativo associato univocamente al documento -->
+
+      <Anno>AAAA</Anno>
+      <!-- Esercizio finanziario o contabile indicato nel documento <messaggio_ack_siope> al tag <esercizio>. Qualora il tag non sia  valorizzato, il dato relativo all'esercizio finanziario o contabile del flusso cui si riferisce il Messaggio, se disponibile, può essere ricavato dagli applicativi contabili dell'Ente.
+		In alternativa: AAAA ricavato da <data_ora_creazione_flusso> -->
+      
+      <TipoRegistro>MESSAGGI_FLUSSO</TipoRegistro>
+      <!-- Il tag sarà valorizzato con stringa fissa convenzionale: "MESSAGGI_FLUSSO" -->
+      
+    </Chiave>
+    <TipologiaUnitaDocumentaria>MESSAGGIO ACK SIOPE</TipologiaUnitaDocumentaria>
+    <!-- Il tag sarà valorizzato con la stringa fissa "MESSAGGIO ACK SIOPE" -->
+    
+  </Intestazione>
+  <Configurazione>
+    <TipoConservazione>VERSAMENTO_ANTICIPATO</TipoConservazione>
+	<!-- Il tag va valorizzato con la stringa fissa "VERSAMENTO_ANTICIPATO" che definisce il processo di conservazione relativo a singole unità documentarie che possono trovarsi ancora nella fase attiva del loro ciclo di vita  -->
+  
+    <ForzaAccettazione>true</ForzaAccettazione>
+    <!-- Il parametro è generalmente valorizzato con false. Se modificato a true significa che si accetta di versare anche documenti con firma non valida, scaduta, o con problemi di formato del file versato.  -->
+    
+    <ForzaConservazione>true</ForzaConservazione>
+    <!-- Il parametro regola l'acquisizione  del pacchetto di versamento in relazione alla presenza o meno di file non firmati. Se valorizzato con true significa che si accetta di versare documenti non firmati: il messaggio ACK Siope infatti non viene firmato digitalmente  -->
+    
+    <ForzaCollegamento>true</ForzaCollegamento>
+    <!-- Il parametro consente il versamento di unità documentarie collegate ad altre unità documentarie già versate nel sistema di conservazione. Se si reputa necessario il collegamento di unità documentarie ad
+        altre non ancora versate nel sistema il parametro va valorizzato con true -->
+
+  </Configurazione>
+  	<ProfiloArchivistico>
+    <!-- La sezione <ProfiloArchivistico> va valorizzata nel caso in cui l'unità documentaria venga classificata e fascicolata e tale informazione sia presente come dato strutturato all'interno dell'applicativo.
+    È possibile valorizzare solo la Classifica e non i campi descrittivi del Fascicolo nel caso in cui l’Unità documentaria sia stata solo classificata e non fascicolata. Nel caso in cui i dati non siano a disposizione l'intera sezione va omessa dall'xml di versamento -->
+		<FascicoloPrincipale>
+			<Classifica>XXXXXXXXXXXXXXXX</Classifica>
+			<!-- Il metadato va valorizzato con l'indicazione del codice di classificazione e la descrizione di ciascun componente gerarchico -->
+		<Fascicolo>
+				<Identificativo>XXXXX</Identificativo>
+				<!-- inserire la stringa con voce di titolario + numero e anno del fascicolo principale -->
+
+				<Oggetto>XXXXX</Oggetto>
+				<!-- inserire la stringa con l'oggetto del fascicolo principale -->
+
+			</Fascicolo>
+			<SottoFascicolo>
+				<!-- Opzionale. Da inserire solo se gestito nell'applicativo in uso -->
+
+					<Identificativo>XXXXXXXXXX</Identificativo>
+					<!-- Codice che identifica l'eventuale sottofascicolo a cui è stato assegnato il documento -->
+
+					<Oggetto>XXXXXXXXXXXXXXXXXXXX</Oggetto>
+					<!-- Valore relativo all'oggetto o titolo dell'eventuale sottofascicolo a cui è stato assegnato il documento -->
+
+			</SottoFascicolo>
+		</FascicoloPrincipale>
+		<FascicoliSecondari>
+		<!--In questa sezione vanno indicate le informazioni relative alle eventuali Classifiche secondarie, Fascicoli e Sottofascicoli secondari in cui sia stata classificata o fascicolata l’Unità documentaria. Valgono le stesse considerazioni effettuate per il fascicolo principale   -->
+			<FascicoloSecondario>
+				<Classifica>XXXXXXXXX</Classifica>
+				<!-- inserire la stringa con eventuale voce di titolario di classificazione secondaria -->
+
+				<Fascicolo>
+					<Identificativo>XXXXXXXXX</Identificativo>
+					<!-- inserire la stringa con voce di titolario + numero e anno di fascicolo secondario -->
+
+					<Oggetto>XXXXXXX</Oggetto>
+					<!-- inserire la stringa con l'oggetto del fascicolo secondario -->
+
+				</Fascicolo>
+			</FascicoloSecondario>
+		</FascicoliSecondari>
+	</ProfiloArchivistico>
+
+  <ProfiloUnitaDocumentaria>
+    <Oggetto>XXXXXXXX</Oggetto>
+    <!-- Il tag sarà valorizzato con una stringa costituita da parte fissa e parte variabile, da comporsi in relazione al valore del tag <stato_flusso> contenuto nel <messaggio_ack_siope> (OK, WARNING, KO): 
+“Ricezione/Rifiuto SIOPE+ flusso  [<identificativo_flusso>]”. 
+Per esempio, se il tag assume il valore “OK” o  “WARNING“: “Ricezione SIOPE+ flusso  1234567891012345", diversamente se  il tag assume il valore “KO”: “Rifiuto SIOPE+ flusso  1234567891012345" -->
+    
+    <Data>AAAA-MM-GG</Data>
+    <!-- Data di creazione del Messaggio contenuta nel tag <data_ora_creazione_flusso> del documento <messaggio_ack_siope>  -->
+    
+  </ProfiloUnitaDocumentaria>
+      
+	   <DocumentiCollegati>
+		<DocumentoCollegato>
+		<!-- Nei campi di questa sezione vanno indicati i dati di chiave relativi al Flusso ordinativi cui fa riferimento il messaggio -->
+			<ChiaveCollegamento>
+			
+				<Numero>XXXXXX</Numero>
+				<!--  corrisponde al valore indicato al tag <identificativo_flusso> del documento <messaggio_ack siope> -->
+				
+				<Anno>AAAA</Anno>
+				<!-- corrisponde all'anno indicato al tag <esercizio> del documento <messaggio_ack siope o, qualora il tag non sia  valorizzato, il dato relativo all'esercizio contabile o finanziario del flusso cui il messaggio si riferisce, viene desunto, se disponibile, dai sistemi contabili dell'ente  -->
+				
+				<TipoRegistro>XXXX</TipoRegistro>
+				<!-- Denominazione del Registro Flussi ordinativi: “FLUSSI_ORDINATIVI” -->
+				
+			</ChiaveCollegamento>
+			<DescrizioneCollegamento>XXXXX</DescrizioneCollegamento>
+			<!-- Descrizione della motivazione del collegamento. Indica la ricezione, in ingresso, del Flusso sul Sistema Siope+ oppure il rifiuto dello stesso, in relazione al tag <stato_flusso>.
+			Nel caso in cui il tag <stato_flusso> sia valorizzato con “OK” o “WARNING”, la stringa è la seguente: “Ricezione flusso SIOPE+“.
+			Nel caso in cui il tag <stato_flusso> sia valorizzato con “KO”, la stringa è la seguente: “Rifiuto flusso SIOPE+” -->
+		</DocumentoCollegato>
+		</DocumentiCollegati>
+	<NumeroAllegati>0</NumeroAllegati>
+	
+	<NumeroAnnessi>0</NumeroAnnessi>
+	
+	<NumeroAnnotazioni>0</NumeroAnnotazioni>
+    
+		  <DocumentoPrincipale>
+    <IDDocumento>XXXXXXXXX</IDDocumento>
+    <!-- Identificativo del documento principale assegnato dall'applicativo -->
+
+    <TipoDocumento>MESSAGGIO ACK SIOPE</TipoDocumento>
+    <!-- Il tag va valorizzato con la stringa fissa "MESSAGGIO ACK SIOPE"  -->
+    
+    <ProfiloDocumento>
+      <Descrizione>XXXXXXXXXX</Descrizione>
+      <!-- Se non valorizzato, il tag può essere omesso -->
+      <Autore>XXXXXXXX</Autore>
+      <!--  Se non valorizzato, il tag può essere omesso  -->
+    </ProfiloDocumento>
+    
+    
+    <StrutturaOriginale>
+      <TipoStruttura>DocumentoGenerico</TipoStruttura>
+      <Componenti>
+        <Componente>
+          <ID>XXXXXXX</ID>
+          <!-- OBBLIGATORIO. Identificativo che consente di ricongiungere il componente al relativo file del SIP. Deve essere univoco -->
+          
+          <OrdinePresentazione>1</OrdinePresentazione>
+          <!-- OBBLIGATORIO. Individua l'ordine di successione del componente all'interno del documento. Deve essere univoco e sequenziale a partire da 1 all'interno dell'unità documentaria   -->
+		  
+          <TipoComponente>Contenuto</TipoComponente>
+          <!-- Rappresenta la tipologia del componente. Può non essere valorizzato nell'xml e, in questo caso, assume il valore di default "Contenuto" -->
+		  
+		  <TipoSupportoComponente>FILE</TipoSupportoComponente>
+          <!-- Individua il tipo di supporto del componente. Il tag può essere omesso e in questo caso assume il valore di default "FILE" -->
+          
+          <NomeComponente>XXXXXXXXXXXXX</NomeComponente>
+          <!-- OBBLIGATORIO. Nome del componente memorizzato nell'applicativo comprensivo dell'estensione -->
+          
+          <FormatoFileVersato>XML</FormatoFileVersato>
+          <!-- OBBLIGATORIO. Formato del file versato: XML -->
+          
+          <HashVersato>XXXXXXXXXXXXXXx</HashVersato>
+          <!-- OBBLIGATORIO. Impronta del documento informatico calcolata dal sistema e memorizzata nell'applicativo. Tag da valorizzare obbligatoriamente ai sensi del DPCM 13 novembre 2014, art. 9 comma f -->
+		  
+		  <UrnVersato>XXXXXXXXXXXXXXx</UrnVersato>
+		  <!--  URN del documento, se disponibile -->
+		  
+		  <IDComponenteVersato>XXXXXXXXXXXXX</IDComponenteVersato>
+		<!-- ID del componente versato, se disponibile -->
+				
+        </Componente>
+      </Componenti>
+    </StrutturaOriginale>
+  </DocumentoPrincipale>
+  		
+	</UnitaDocumentaria>
+	
+	
+	
+	

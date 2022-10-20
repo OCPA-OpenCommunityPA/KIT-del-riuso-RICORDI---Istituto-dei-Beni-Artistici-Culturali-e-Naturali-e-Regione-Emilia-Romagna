@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="DatiSpecifici" type="DatiSpecificiType"/>
+  <xs:complexType name="DatiSpecificiType">
+    <xs:sequence>
+	   <xs:element name="VersioneDatiSpecifici" type="xs:token"/>
+	   <xs:element name="Originatore" type="NoEmptyString" minOccurs="1"/>
+	   <xs:element name="Responsabile" type="NoEmptyString" minOccurs="1"/>
+	   <xs:element name="ResponsabileTenutaRegistro" type="NoEmptyString" minOccurs="1"/>
+	   <xs:element name="Operatore" type="NoEmptyString" minOccurs="1"/>
+	   <xs:element name="NumeroProgressivoRigaIniziale" type="NoEmptyString" minOccurs="1"/>
+	   <xs:element name="NumeroProgressivoRigaFinale" type="NoEmptyString" minOccurs="1"/>
+	   <xs:element name="NumeroRegistrazioni" type="NoEmptyString" minOccurs="1"/>
+	   <xs:element name="DataInizioRegistrazioni" minOccurs="1" maxOccurs="1" type="xs:dateTime"/>
+	   <xs:element name="DataFineRegistrazioni" minOccurs="1" maxOccurs="1" type="xs:dateTime"/>
+	   <xs:element name="DataChiusuraRegistro" minOccurs="1" maxOccurs="1" type="xs:dateTime"/>
+	   <xs:element name="AnnoEsercizio" type="NoEmptyString" minOccurs="1"/>
+	   <xs:element name="NumeroPaginaIniziale" type="NoEmptyString" minOccurs="1"/>
+	   <xs:element name="NumeroPaginaFinale" type="NoEmptyString" minOccurs="1"/>
+	   <xs:element name="NumeroPagine" type="NoEmptyString" minOccurs="1"/>
+	    <xs:element name="TempoConservazione" type="NoEmptyString" minOccurs="1"/>
+	   <xs:element name="Consultabilita" minOccurs="1" maxOccurs="1">
+       <xs:simpleType>
+          <xs:restriction base="xs:string">
+		    <xs:enumeration value="RISERVATO"/>
+            <xs:enumeration value="NON RISERVATO"/>
+            <xs:enumeration value="DATI PERSONALI"/>
+			<xs:enumeration value="DATI SENSIBILI"/>
+			<xs:enumeration value="DATI GENETICI"/>
+			<xs:enumeration value="DATI GIUDIZIARI"/>
+			<xs:enumeration value="DATI STATO SALUTE"/>
+			<xs:enumeration value="DATI VITA SESSUALE"/>
+			<xs:enumeration value="DATI RAPPORTI RISERVATI FAMILIARI"/>
+			<xs:enumeration value="NON PRECISATO"/>
+          </xs:restriction>
+        </xs:simpleType>
+     </xs:element>
+	 <xs:element name="DenominazioneApplicativo" type="NoEmptyString" minOccurs="1"/>
+	 <xs:element name="VersioneApplicativo" type="NoEmptyString" minOccurs="1"/>
+	 <xs:element name="ProduttoreApplicativo" type="NoEmptyString" minOccurs="1"/>
+     </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="NoEmptyString">
+            <xs:restriction base="xs:string">
+                <xs:minLength value="1"/>
+                </xs:restriction>
+        </xs:simpleType>
+</xs:schema>
+
